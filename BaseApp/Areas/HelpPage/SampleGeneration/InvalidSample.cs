@@ -13,6 +13,7 @@ namespace BaseApp.Areas.HelpPage
             {
                 throw new ArgumentNullException("errorMessage");
             }
+
             ErrorMessage = errorMessage;
         }
 

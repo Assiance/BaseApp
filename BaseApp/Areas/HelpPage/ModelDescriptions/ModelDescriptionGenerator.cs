@@ -13,13 +13,15 @@ using Newtonsoft.Json;
 
 namespace BaseApp.Areas.HelpPage.ModelDescriptions
 {
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary>
     /// Generates model descriptions for given types.
     /// </summary>
     public class ModelDescriptionGenerator
     {
         // Modify this to support more data annotation attributes.
-        private readonly IDictionary<Type, Func<object, string>> AnnotationTextGenerator = new Dictionary<Type, Func<object, string>>
+        private readonly IDictionary<Type, Func<object, string>> annotationTextGenerator = new Dictionary<Type, Func<object, string>>
         {
             { typeof(RequiredAttribute), a => "Required" },
             { typeof(RangeAttribute), a =>
@@ -61,7 +63,7 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
         };
 
         // Modify this to add more default documentations.
-        private readonly IDictionary<Type, string> DefaultTypeDocumentation = new Dictionary<Type, string>
+        private readonly IDictionary<Type, string> defaultTypeDocumentation = new Dictionary<Type, string>
         {
             { typeof(Int16), "integer" },
             { typeof(Int32), "integer" },
@@ -84,7 +86,7 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
             { typeof(Boolean), "boolean" },
         };
 
-        private Lazy<IModelDocumentationProvider> _documentationProvider;
+        private Lazy<IModelDocumentationProvider> documentationProvider;
 
         public ModelDescriptionGenerator(HttpConfiguration config)
         {
@@ -93,7 +95,7 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
                 throw new ArgumentNullException("config");
             }
 
-            _documentationProvider = new Lazy<IModelDocumentationProvider>(() => config.Services.GetDocumentationProvider() as IModelDocumentationProvider);
+            documentationProvider = new Lazy<IModelDocumentationProvider>(() => config.Services.GetDocumentationProvider() as IModelDocumentationProvider);
             GeneratedModels = new Dictionary<string, ModelDescription>(StringComparer.OrdinalIgnoreCase);
         }
 
@@ -103,10 +105,11 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
         {
             get
             {
-                return _documentationProvider.Value;
+                return documentationProvider.Value;
             }
         }
 
+        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1118:ParameterMustNotSpanMultipleLines", Justification = "Reviewed. Suppression is OK here.")]
         public ModelDescription GetOrCreateModelDescription(Type modelType)
         {
             if (modelType == null)
@@ -139,7 +142,7 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
                 return modelDescription;
             }
 
-            if (DefaultTypeDocumentation.ContainsKey(modelType))
+            if (defaultTypeDocumentation.ContainsKey(modelType))
             {
                 return GenerateSimpleTypeModelDescription(modelType);
             }
@@ -161,6 +164,7 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
                         return GenerateCollectionModelDescription(modelType, genericArguments[0]);
                     }
                 }
+
                 if (genericArguments.Length == 2)
                 {
                     Type dictionaryType = typeof(IDictionary<,>).MakeGenericType(genericArguments);
@@ -252,10 +256,11 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
         private string CreateDefaultDocumentation(Type type)
         {
             string documentation;
-            if (DefaultTypeDocumentation.TryGetValue(type, out documentation))
+            if (defaultTypeDocumentation.TryGetValue(type, out documentation))
             {
                 return documentation;
             }
+
             if (DocumentationProvider != null)
             {
                 documentation = DocumentationProvider.GetDocumentation(type);
@@ -272,7 +277,7 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
             foreach (Attribute attribute in attributes)
             {
                 Func<object, string> textGenerator;
-                if (AnnotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
+                if (annotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
                 {
                     annotations.Add(
                         new ParameterAnnotation
@@ -291,6 +296,7 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
                 {
                     return -1;
                 }
+
                 if (y.AnnotationAttribute is RequiredAttribute)
                 {
                     return 1;
@@ -409,13 +415,16 @@ namespace BaseApp.Areas.HelpPage.ModelDescriptions
                         Name = field.Name,
                         Value = field.GetRawConstantValue().ToString()
                     };
+
                     if (DocumentationProvider != null)
                     {
                         enumValue.Documentation = DocumentationProvider.GetDocumentation(field);
                     }
+
                     enumDescription.Values.Add(enumValue);
                 }
             }
+
             GeneratedModels.Add(enumDescription.Name, enumDescription);
 
             return enumDescription;

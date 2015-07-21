@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace BaseApp.Models
 {
-    // Models returned by AccountController actions.
+    using System.Diagnostics.CodeAnalysis;
 
+    // Models returned by AccountController actions.
     public class ExternalLoginViewModel
     {
         public string Name { get; set; }
@@ -14,6 +15,7 @@ namespace BaseApp.Models
         public string State { get; set; }
     }
 
+    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed. Suppression is OK here.")]
     public class ManageInfoViewModel
     {
         public string LocalLoginProvider { get; set; }

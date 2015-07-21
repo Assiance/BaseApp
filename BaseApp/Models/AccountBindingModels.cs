@@ -4,8 +4,9 @@ using Newtonsoft.Json;
 
 namespace BaseApp.Models
 {
-    // Models used as parameters to AccountController actions.
+    using System.Diagnostics.CodeAnalysis;
 
+    // Models used as parameters to AccountController actions.
     public class AddExternalLoginBindingModel
     {
         [Required]
@@ -13,6 +14,7 @@ namespace BaseApp.Models
         public string ExternalAccessToken { get; set; }
     }
 
+    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed. Suppression is OK here.")]
     public class ChangePasswordBindingModel
     {
         [Required]

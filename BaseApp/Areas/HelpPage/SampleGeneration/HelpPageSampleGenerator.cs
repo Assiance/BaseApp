@@ -93,6 +93,7 @@ namespace BaseApp.Areas.HelpPage
             {
                 throw new ArgumentNullException("api");
             }
+
             string controllerName = api.ActionDescriptor.ControllerDescriptor.ControllerName;
             string actionName = api.ActionDescriptor.ActionName;
             IEnumerable<string> parameterNames = api.ParameterDescriptions.Select(p => p.Name);
@@ -237,10 +238,12 @@ namespace BaseApp.Areas.HelpPage
             {
                 throw new InvalidEnumArgumentException("sampleDirection", (int)sampleDirection, typeof(SampleDirection));
             }
+
             if (api == null)
             {
                 throw new ArgumentNullException("api");
             }
+
             Type type;
             if (ActualHttpMessageTypes.TryGetValue(new HelpPageSampleKey(sampleDirection, controllerName, actionName, parameterNames), out type) ||
                 ActualHttpMessageTypes.TryGetValue(new HelpPageSampleKey(sampleDirection, controllerName, actionName, new[] { "*" }), out type))
@@ -254,6 +257,7 @@ namespace BaseApp.Areas.HelpPage
                         newFormatters.Add(formatter);
                     }
                 }
+
                 formatters = newFormatters;
             }
             else
@@ -291,6 +295,7 @@ namespace BaseApp.Areas.HelpPage
             {
                 throw new ArgumentNullException("formatter");
             }
+
             if (mediaType == null)
             {
                 throw new ArgumentNullException("mediaType");
@@ -345,6 +350,7 @@ namespace BaseApp.Areas.HelpPage
                 {
                     ms.Dispose();
                 }
+
                 if (content != null)
                 {
                     content.Dispose();
@@ -361,6 +367,7 @@ namespace BaseApp.Areas.HelpPage
             {
                 return aggregateException.Flatten().InnerException;
             }
+
             return exception;
         }
 
@@ -411,7 +418,19 @@ namespace BaseApp.Areas.HelpPage
                 case SampleDirection.Response:
                     return formatter.CanWriteType(type);
             }
+
             return false;
+        }
+
+        private static object WrapSampleIfString(object sample)
+        {
+            string stringSample = sample as string;
+            if (stringSample != null)
+            {
+                return new TextSample(stringSample);
+            }
+
+            return sample;
         }
 
         private IEnumerable<KeyValuePair<HelpPageSampleKey, object>> GetAllActionSamples(string controllerName, string actionName, IEnumerable<string> parameterNames, SampleDirection sampleDirection)
@@ -428,17 +447,6 @@ namespace BaseApp.Areas.HelpPage
                     yield return sample;
                 }
             }
-        }
-
-        private static object WrapSampleIfString(object sample)
-        {
-            string stringSample = sample as string;
-            if (stringSample != null)
-            {
-                return new TextSample(stringSample);
-            }
-
-            return sample;
         }
     }
 }

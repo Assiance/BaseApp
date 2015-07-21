@@ -14,7 +14,7 @@ namespace BaseApp.Areas.HelpPage
     public class ObjectGenerator
     {
         internal const int DefaultCollectionSize = 2;
-        private readonly SimpleTypeObjectGenerator SimpleObjectGenerator = new SimpleTypeObjectGenerator();
+        private readonly SimpleTypeObjectGenerator simpleObjectGenerator = new SimpleTypeObjectGenerator();
 
         /// <summary>
         /// Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
@@ -42,7 +42,7 @@ namespace BaseApp.Areas.HelpPage
             {
                 if (SimpleTypeObjectGenerator.CanGenerateObject(type))
                 {
-                    return SimpleObjectGenerator.GenerateObject(type);
+                    return simpleObjectGenerator.GenerateObject(type);
                 }
 
                 if (type.IsArray)
@@ -176,10 +176,12 @@ namespace BaseApp.Areas.HelpPage
                 parameterValues[i] = objectGenerator.GenerateObject(genericArgs[i], createdObjectReferences);
                 failedToCreateTuple &= parameterValues[i] == null;
             }
+
             if (failedToCreateTuple)
             {
                 return null;
             }
+
             object result = Activator.CreateInstance(type, parameterValues);
             return result;
         }
@@ -209,6 +211,7 @@ namespace BaseApp.Areas.HelpPage
                 // Failed to create key and values
                 return null;
             }
+
             object result = Activator.CreateInstance(keyValuePairType, keyObject, valueObject);
             return result;
         }
@@ -276,6 +279,7 @@ namespace BaseApp.Areas.HelpPage
             {
                 return possibleValues.GetValue(0);
             }
+
             return null;
         }
 
@@ -292,10 +296,12 @@ namespace BaseApp.Areas.HelpPage
             {
                 list = GenerateArray(typeof(object[]), size, createdObjectReferences);
             }
+
             if (list == null)
             {
                 return null;
             }
+
             if (isGeneric)
             {
                 Type argumentType = typeof(IEnumerable<>).MakeGenericType(queryableType.GetGenericArguments());
@@ -362,6 +368,7 @@ namespace BaseApp.Areas.HelpPage
 
                 result = defaultCtor.Invoke(new object[0]);
             }
+
             createdObjectReferences.Add(type, result);
             SetPublicProperties(type, result, createdObjectReferences);
             SetPublicFields(type, result, createdObjectReferences);
@@ -395,7 +402,6 @@ namespace BaseApp.Areas.HelpPage
 
         private class SimpleTypeObjectGenerator
         {
-            private long _index = 0;
             private static readonly Dictionary<Type, Func<long, object>> DefaultGenerators = InitializeGenerators();
 
             [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "These are simple type factories and cannot be split up.")]
@@ -446,6 +452,9 @@ namespace BaseApp.Areas.HelpPage
             {
                 return DefaultGenerators.ContainsKey(type);
             }
+
+            [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1309:FieldNamesMustNotBeginWithUnderscore", Justification = "Reviewed. Suppression is OK here.")]
+            private long _index = 0;
 
             public object GenerateObject(Type type)
             {

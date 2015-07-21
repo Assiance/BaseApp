@@ -43,6 +43,7 @@ namespace BaseApp.Controllers
             {
                 return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
+
             private set
             {
                 _userManager = value;
@@ -123,8 +124,7 @@ namespace BaseApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
-                model.NewPassword);
+            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             
             if (!result.Succeeded)
             {
@@ -289,8 +289,8 @@ namespace BaseApp.Controllers
 
             if (generateState)
             {
-                const int strengthInBits = 256;
-                state = RandomOAuthStateGenerator.Generate(strengthInBits);
+                const int StrengthInBits = 256;
+                state = RandomOAuthStateGenerator.Generate(StrengthInBits);
             }
             else
             {
@@ -370,6 +370,7 @@ namespace BaseApp.Controllers
             {
                 return GetErrorResult(result); 
             }
+
             return Ok();
         }
 
@@ -403,7 +404,7 @@ namespace BaseApp.Controllers
                 {
                     foreach (string error in result.Errors)
                     {
-                        ModelState.AddModelError("", error);
+                        ModelState.AddModelError(string.Empty, error);
                     }
                 }
 
@@ -473,14 +474,14 @@ namespace BaseApp.Controllers
 
             public static string Generate(int strengthInBits)
             {
-                const int bitsPerByte = 8;
+                const int BitsPerByte = 8;
 
-                if (strengthInBits % bitsPerByte != 0)
+                if (strengthInBits % BitsPerByte != 0)
                 {
                     throw new ArgumentException("strengthInBits must be evenly divisible by 8.", "strengthInBits");
                 }
 
-                int strengthInBytes = strengthInBits / bitsPerByte;
+                int strengthInBytes = strengthInBits / BitsPerByte;
 
                 byte[] data = new byte[strengthInBytes];
                 _random.GetBytes(data);

@@ -315,7 +315,7 @@ namespace BaseApp.Areas.HelpPage
                     }
                     else
                     {
-                        Debug.Assert(parameterDescriptor == null);
+                        Debug.Assert(parameterDescriptor == null, "undeclared route parameter");
 
                         // If parameterDescriptor is null, this is an undeclared route parameter which only occurs
                         // when source is FromUri. Ignored in request model and among resource parameters but listed
@@ -337,8 +337,7 @@ namespace BaseApp.Areas.HelpPage
             return TypeDescriptor.GetConverter(parameterType).CanConvertFrom(typeof(string));
         }
 
-        private static ParameterDescription AddParameterDescription(HelpPageApiModel apiModel,
-            ApiParameterDescription apiParameter, ModelDescription typeDescription)
+        private static ParameterDescription AddParameterDescription(HelpPageApiModel apiModel, ApiParameterDescription apiParameter, ModelDescription typeDescription)
         {
             ParameterDescription parameterDescription = new ParameterDescription
             {
@@ -452,6 +451,7 @@ namespace BaseApp.Areas.HelpPage
                     modelGenerator.GetOrCreateModelDescription(parameterType);
                 }
             }
+
             return modelGenerator;
         }
 
