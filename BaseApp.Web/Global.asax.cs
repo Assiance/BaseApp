@@ -13,15 +13,17 @@ namespace BaseApp.Web
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        private const string ContainerKey = "_Container";
+
         public IContainer Container
         {
             get
             {
-                return (IContainer)HttpContext.Current.Items["_Container"];
+                return (IContainer)HttpContext.Current.Items[ContainerKey];
             }
             set
             {
-                HttpContext.Current.Items["_Container"] = value;
+                HttpContext.Current.Items[ContainerKey] = value;
             }
         }
 
