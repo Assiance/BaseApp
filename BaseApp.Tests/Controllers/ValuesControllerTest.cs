@@ -4,9 +4,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+
+using BaseApp.Web.Controllers;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BaseApp;
-using BaseApp.Controllers;
 
 namespace BaseApp.Tests.Controllers
 {

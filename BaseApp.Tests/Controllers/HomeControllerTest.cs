@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
+using BaseApp.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BaseApp;
-using BaseApp.Controllers;
 
 namespace BaseApp.Tests.Controllers
 {
