@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-using BaseApp.Web.Models;
+using BaseApp.DAL.Contexts;
 
 namespace BaseApp.Web
 {

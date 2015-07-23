@@ -1,4 +1,4 @@
-﻿using BaseApp.Web.Models;
+﻿using BaseApp.Domain.Models.User;
 
 namespace BaseApp.Web.Infrastructure
 {

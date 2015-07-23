@@ -29,6 +29,7 @@ namespace BaseApp.Web.Areas.HelpPage.Controllers
         public ActionResult Index()
         {
             this.ViewBag.DocumentationProvider = this.Configuration.Services.GetDocumentationProvider();
+            var apiGroup = Configuration.Services.GetApiExplorer();
             return this.View(this.Configuration.Services.GetApiExplorer().ApiDescriptions);
         }
 

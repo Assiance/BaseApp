@@ -1,6 +1,6 @@
 ﻿using System;
 
-using BaseApp.Web.Models;
+using BaseApp.DAL.Contexts;
 using BaseApp.Web.Providers;
 
 using Microsoft.AspNet.Identity;

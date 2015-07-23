@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
 
+using BaseApp.Web.Areas.HelpPage.Controllers;
+
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
 using StructureMap.Pipeline;

@@ -1,6 +1,7 @@
 ﻿using System.Security.Principal;
 
-using BaseApp.Web.Models;
+using BaseApp.DAL.Contexts;
+using BaseApp.Domain.Models.User;
 
 using Microsoft.AspNet.Identity;
 

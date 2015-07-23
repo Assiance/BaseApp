@@ -6,10 +6,12 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-
-using BaseApp.Web.Models;
+using BaseApp.Domain.Models.Account;
+using BaseApp.Domain.Models.User;
 using BaseApp.Web.Providers;
 using BaseApp.Web.Results;
+using BaseApp.Web.ViewModels;
+using BaseApp.Web.ViewModels.Account;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -118,7 +120,7 @@ namespace BaseApp.Web.Controllers
 
         // POST api/Account/ChangePassword
         [Route("ChangePassword")]
-        public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
+        public async Task<IHttpActionResult> ChangePassword(ChangePasswordModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -137,7 +139,7 @@ namespace BaseApp.Web.Controllers
 
         // POST api/Account/SetPassword
         [Route("SetPassword")]
-        public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
+        public async Task<IHttpActionResult> SetPassword(SetPasswordModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -156,7 +158,7 @@ namespace BaseApp.Web.Controllers
 
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
-        public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
+        public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -194,7 +196,7 @@ namespace BaseApp.Web.Controllers
 
         // POST api/Account/RemoveLogin
         [Route("RemoveLogin")]
-        public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
+        public async Task<IHttpActionResult> RemoveLogin(RemoveLoginModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -322,7 +324,7 @@ namespace BaseApp.Web.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Register(RegisterModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -345,7 +347,7 @@ namespace BaseApp.Web.Controllers
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]
-        public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
+        public async Task<IHttpActionResult> RegisterExternal(RegisterExternalModel model)
         {
             if (!this.ModelState.IsValid)
             {

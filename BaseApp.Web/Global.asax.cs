@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+using BaseApp.Web.Areas.HelpPage.Controllers;
 using BaseApp.Web.Infrastructure;
 using BaseApp.Web.Infrastructure.Tasks;
 
@@ -35,18 +36,21 @@ namespace BaseApp.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            DependencyResolver.SetResolver(new StructureMapDependencyResolver(() => this.Container ?? ObjectFactory.Container));
+            DependencyResolver.SetResolver(new StructureMapDependencyResolver(() => this.Container ?? IoC.Container));
 
-            ObjectFactory.Configure(cfg =>
+            IoC.Container.Configure(cfg =>
             {
                 cfg.AddRegistry(new StandardRegistry());
                 cfg.AddRegistry(new ControllerRegistry());
-                cfg.AddRegistry(new ActionFilterRegistry(() => this.Container ?? ObjectFactory.Container));
+                cfg.AddRegistry(new ActionFilterRegistry(() => this.Container ?? IoC.Container));
                 cfg.AddRegistry(new MvcRegistry());
                 cfg.AddRegistry(new TaskRegistry());
+
+                //Bug with structure map
+                cfg.For<HelpController>().Use(ctx => new HelpController());
             });
 
-            using (var container = ObjectFactory.Container.GetNestedContainer())
+            using (var container = IoC.Container.GetNestedContainer())
             {
                 foreach (var task in container.GetAllInstances<IRunAtInit>())
                 {
@@ -62,7 +66,7 @@ namespace BaseApp.Web
 
         public void Application_BeginRequest()
         {
-            this.Container = ObjectFactory.Container.GetNestedContainer();
+            this.Container = IoC.Container.GetNestedContainer();
 
             foreach (var task in this.Container.GetAllInstances<IRunOnEachRequest>())
             {

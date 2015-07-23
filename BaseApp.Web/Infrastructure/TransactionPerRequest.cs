@@ -1,9 +1,8 @@
 ﻿using System.Data;
 using System.Data.Entity;
 using System.Web;
-
+using BaseApp.DAL.Contexts;
 using BaseApp.Web.Infrastructure.Tasks;
-using BaseApp.Web.Models;
 
 namespace BaseApp.Web.Infrastructure
 {
