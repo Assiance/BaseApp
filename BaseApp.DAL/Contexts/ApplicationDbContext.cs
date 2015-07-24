@@ -16,5 +16,7 @@ namespace BaseApp.DAL.Contexts
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BaseApp.Domain.Models.Example> Examples { get; set; }
     }
 }
