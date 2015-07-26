@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+
+using BaseApp.Web.Infrastructure.Alerts;
+
 using Microsoft.Web.Mvc;
 using BaseApp.DAL.Contexts;
 using BaseApp.Domain.Models;
@@ -56,10 +59,10 @@ namespace BaseApp.Web.Controllers
                 db.SaveChanges();
 
                 //this.RedirectToAction<HomeController>(a => a.Index()); would redirect to HomeController Index
-                return this.RedirectToAction(c => c.Index());
+                return this.RedirectToAction(c => c.Index()).WithSuccess("Example Created");
             }
 
-            return View(example);
+            return View(example).WithError("Error with example");
         }
 
         // GET: Examples/Edit/5
@@ -72,7 +75,7 @@ namespace BaseApp.Web.Controllers
             Example example = db.Examples.Find(id);
             if (example == null)
             {
-                return HttpNotFound();
+                return HttpNotFound().WithError("Example not found");
             }
             return View(example);
         }
@@ -88,9 +91,9 @@ namespace BaseApp.Web.Controllers
             {
                 db.Entry(example).State = EntityState.Modified;
                 db.SaveChanges();
-                return this.RedirectToAction(c => c.Index());
+                return this.RedirectToAction(c => c.Index()).WithSuccess("Example Edited");
             }
-            return View(example);
+            return View(example).WithError("Error with Example");
         }
 
         // GET: Examples/Delete/5
@@ -103,7 +106,7 @@ namespace BaseApp.Web.Controllers
             Example example = db.Examples.Find(id);
             if (example == null)
             {
-                return HttpNotFound();
+                return HttpNotFound().WithError("Example not found");
             }
             return View(example);
         }
@@ -116,7 +119,7 @@ namespace BaseApp.Web.Controllers
             Example example = db.Examples.Find(id);
             db.Examples.Remove(example);
             db.SaveChanges();
-            return this.RedirectToAction(a => a.Index());
+            return this.RedirectToAction(a => a.Index()).WithSuccess("Example deleted");
         }
 
         protected override void Dispose(bool disposing)

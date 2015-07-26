@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using BaseApp.Web.Infrastructure.Security;
 
 namespace BaseApp.Web
 {
@@ -6,6 +7,7 @@ namespace BaseApp.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new RequireSecureConnectionFilter()); //Leave first in list
             filters.Add(new HandleErrorAttribute());
         }
     }

@@ -1,14 +1,13 @@
 ﻿using System.Web.Mvc;
 using BaseApp.Web.Controllers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BaseApp;
+using NUnit.Framework;
 
-namespace BaseApp.Tests.Controllers
+namespace BaseApp.Tests.Web.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class HomeControllerTest
     {
-        [TestMethod]
+        [Test]
         public void Index()
         {
             // Arrange

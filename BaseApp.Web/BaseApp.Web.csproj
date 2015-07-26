@@ -264,6 +264,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ActionFilterRegistry.cs" />
+    <Compile Include="Infrastructure\Alerts\Alert.cs" />
+    <Compile Include="Infrastructure\Alerts\AlertDecoratorResult.cs" />
+    <Compile Include="Infrastructure\Alerts\AlertExtensions.cs" />
     <Compile Include="Infrastructure\ControllerConvention.cs" />
     <Compile Include="Infrastructure\ControllerRegistry.cs" />
     <Compile Include="Infrastructure\CurrentUser.cs" />
@@ -272,6 +275,7 @@
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Infrastructure\IoC.cs" />
     <Compile Include="Infrastructure\MvcRegistry.cs" />
+    <Compile Include="Infrastructure\Security\RequireSecureConnectionFilter.cs" />
     <Compile Include="Infrastructure\StandardRegistry.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
     <Compile Include="Infrastructure\StructureMapFilterProvider.cs" />
@@ -1146,11 +1150,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\underscore.min.map" />
-    <Content Include="Views\Examples\Create.cshtml" />
-    <Content Include="Views\Examples\Delete.cshtml" />
-    <Content Include="Views\Examples\Details.cshtml" />
-    <Content Include="Views\Examples\Edit.cshtml" />
-    <Content Include="Views\Examples\Index.cshtml" />
+    <Content Include="Views\Example\Create.cshtml" />
+    <Content Include="Views\Example\Delete.cshtml" />
+    <Content Include="Views\Example\Details.cshtml" />
+    <Content Include="Views\Example\Edit.cshtml" />
+    <Content Include="Views\Example\Index.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

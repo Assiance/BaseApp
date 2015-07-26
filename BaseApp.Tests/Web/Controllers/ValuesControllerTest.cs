@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Web.Http;
-
 using BaseApp.Web.Controllers;
+using NUnit.Framework;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BaseApp;
-
-namespace BaseApp.Tests.Controllers
+namespace BaseApp.Tests.Web.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class ValuesControllerTest
     {
-        [TestMethod]
+        [Test]
         public void Get()
         {
             // Arrange
@@ -31,7 +24,7 @@ namespace BaseApp.Tests.Controllers
             Assert.AreEqual("value2", result.ElementAt(1));
         }
 
-        [TestMethod]
+        [Test]
         public void GetById()
         {
             // Arrange
@@ -44,7 +37,7 @@ namespace BaseApp.Tests.Controllers
             Assert.AreEqual("value", result);
         }
 
-        [TestMethod]
+        [Test]
         public void Post()
         {
             // Arrange
@@ -56,7 +49,7 @@ namespace BaseApp.Tests.Controllers
             // Assert
         }
 
-        [TestMethod]
+        [Test]
         public void Put()
         {
             // Arrange
@@ -68,7 +61,7 @@ namespace BaseApp.Tests.Controllers
             // Assert
         }
 
-        [TestMethod]
+        [Test]
         public void Delete()
         {
             // Arrange
