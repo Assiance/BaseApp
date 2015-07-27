@@ -275,6 +275,7 @@
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Infrastructure\IoC.cs" />
     <Compile Include="Infrastructure\MvcRegistry.cs" />
+    <Compile Include="Infrastructure\Security\EnforceHttpsHandler.cs" />
     <Compile Include="Infrastructure\Security\RequireSecureConnectionFilter.cs" />
     <Compile Include="Infrastructure\StandardRegistry.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />

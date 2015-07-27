@@ -66,9 +66,14 @@ namespace BaseApp.Web
 
         public void Application_BeginRequest()
         {
-            this.Container = IoC.Container.GetNestedContainer();
+            if (Request.IsSecureConnection)
+            {
+                Response.AddHeader("Strict-Transport-Security", "max-age=31536000");
+            }
 
-            foreach (var task in this.Container.GetAllInstances<IRunOnEachRequest>())
+            Container = IoC.Container.GetNestedContainer();
+
+            foreach (var task in Container.GetAllInstances<IRunOnEachRequest>())
             {
                 task.Execute();
             }
@@ -76,7 +81,7 @@ namespace BaseApp.Web
 
         public void Application_Error()
         {
-            foreach (var task in this.Container.GetAllInstances<IRunOnError>())
+            foreach (var task in Container.GetAllInstances<IRunOnError>())
             {
                 task.Execute();
             }
@@ -86,15 +91,15 @@ namespace BaseApp.Web
         {
             try
             {
-                foreach (var task in this.Container.GetAllInstances<IRunAfterEachRequest>())
+                foreach (var task in Container.GetAllInstances<IRunAfterEachRequest>())
                 {
                     task.Execute();
                 }
             }
             finally
             {
-                this.Container.Dispose();
-                this.Container = null;   
+                Container.Dispose();
+                Container = null;   
             }
         }
     }

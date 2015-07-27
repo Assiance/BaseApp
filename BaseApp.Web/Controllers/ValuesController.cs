@@ -3,7 +3,6 @@ using System.Web.Http;
 
 namespace BaseApp.Web.Controllers
 {
-    [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values

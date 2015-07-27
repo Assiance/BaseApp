@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-
+using BaseApp.Web.Infrastructure.Security;
 using Microsoft.Owin.Security.OAuth;
 
 namespace BaseApp.Web
@@ -21,6 +21,8 @@ namespace BaseApp.Web
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.MessageHandlers.Add(new EnforceHttpsHandler());
         }
     }
 }
