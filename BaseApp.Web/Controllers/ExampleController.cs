@@ -6,16 +6,16 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
+using BaseApp.Web.Filters;
 using BaseApp.Web.Infrastructure.Alerts;
-
+using BaseApp.Web.Infrastructure.Controllers;
 using Microsoft.Web.Mvc;
 using BaseApp.DAL.Contexts;
 using BaseApp.Domain.Models;
 
 namespace BaseApp.Web.Controllers
 {
-    public class ExampleController : Controller
+    public class ExampleController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -26,6 +26,7 @@ namespace BaseApp.Web.Controllers
         }
 
         // GET: Examples/Details/5
+        [Log("Viewed example {id}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -51,6 +52,7 @@ namespace BaseApp.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Log("Created example")]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName")] Example example)
         {
             if (ModelState.IsValid)
@@ -59,7 +61,7 @@ namespace BaseApp.Web.Controllers
                 db.SaveChanges();
 
                 //this.RedirectToAction<HomeController>(a => a.Index()); would redirect to HomeController Index
-                return this.RedirectToAction(c => c.Index()).WithSuccess("Example Created");
+                return RedirectToAction<ExampleController>(c => c.Index()).WithSuccess("Example Created");
             }
 
             return View(example).WithError("Error with example");
@@ -91,7 +93,7 @@ namespace BaseApp.Web.Controllers
             {
                 db.Entry(example).State = EntityState.Modified;
                 db.SaveChanges();
-                return this.RedirectToAction(c => c.Index()).WithSuccess("Example Edited");
+                return RedirectToAction<ExampleController>(c => c.Index()).WithSuccess("Example Edited");
             }
             return View(example).WithError("Error with Example");
         }
@@ -114,12 +116,13 @@ namespace BaseApp.Web.Controllers
         // POST: Examples/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Log("Deleted example {id}")]
         public ActionResult DeleteConfirmed(int id)
         {
             Example example = db.Examples.Find(id);
             db.Examples.Remove(example);
             db.SaveChanges();
-            return this.RedirectToAction(a => a.Index()).WithSuccess("Example deleted");
+            return RedirectToAction<ExampleController>(a => a.Index()).WithSuccess("Example deleted");
         }
 
         protected override void Dispose(bool disposing)

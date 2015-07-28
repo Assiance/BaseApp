@@ -259,6 +259,8 @@
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Filters\ExampleSelectListPopulatorAttribute.cs" />
+    <Compile Include="Filters\LogAttribute.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -269,6 +271,7 @@
     <Compile Include="Infrastructure\Alerts\AlertExtensions.cs" />
     <Compile Include="Infrastructure\ControllerConvention.cs" />
     <Compile Include="Infrastructure\ControllerRegistry.cs" />
+    <Compile Include="Infrastructure\Controllers\BaseController.cs" />
     <Compile Include="Infrastructure\CurrentUser.cs" />
     <Compile Include="Infrastructure\ICurrentUser.cs" />
     <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />

@@ -1,14 +1,15 @@
 ﻿using System.Web.Mvc;
+using BaseApp.Web.Infrastructure.Controllers;
 
 namespace BaseApp.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            this.ViewBag.Title = "Home Page";
+            ViewBag.Title = "Home Page";
 
-            return this.View();
+            return View();
         }
     }
 }

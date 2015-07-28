@@ -16,15 +16,15 @@ namespace BaseApp.Web.Infrastructure
 
         public CurrentUser(IIdentity identity, ApplicationDbContext context)
         {
-            this._identity = identity;
-            this._context = context;
+            _identity = identity;
+            _context = context;
         }
 
         public ApplicationUser User
         {
             get
             {
-                return this._user ?? (this._user = this._context.Users.Find(this._identity.GetUserId()));
+                return _user ?? (_user = _context.Users.Find(_identity.GetUserId()));
             }
         }
     }

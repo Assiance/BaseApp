@@ -1,0 +1,47 @@
+﻿using System.Linq;
+using System.Web.Mvc;
+using BaseApp.DAL.Contexts;
+using BaseApp.Domain.Models;
+using StyleCop.CSharp;
+using Enum = System.Enum;
+
+namespace BaseApp.Web.Filters
+{
+    public class ExampleSelectListPopulatorAttribute : ActionFilterAttribute
+    {
+        public ApplicationDbContext Context { get; set; }
+
+        //IF EXAMPLE WAS AN ENUM
+        //private SelectListItem[] GetAvailableExamples1()
+        //{
+        //    return Enum.GetValues(typeof(Example))
+        //            .Cast<Example>()
+        //            .Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() })
+        //            .ToArray();
+        //}
+
+        private SelectListItem[] GetAvailableExamples()
+        {
+            return Context.Examples.Select(x => new SelectListItem()
+                                                    {
+                                                        Text = x.FirstName,
+                                                        Value = x.Id.ToString()
+                                                    }).ToArray();
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            var viewResult = filterContext.Result as ViewResult;
+
+            if (viewResult != null && viewResult.Model is IHaveExampleSelectList)
+            {
+                ((IHaveExampleSelectList)viewResult.Model).AvailableExamples = GetAvailableExamples();
+            }
+        }
+    }
+
+    public interface IHaveExampleSelectList
+    {
+        SelectListItem[] AvailableExamples { get; set; }
+    }
+}

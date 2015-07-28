@@ -1,15 +1,19 @@
-﻿using AutoMapper;
+﻿using System.Web.Mvc;
+using AutoMapper;
 
 using BaseApp.Domain.Models;
+using BaseApp.Web.Filters;
 using BaseApp.Web.Infrastructure.Mapping;
 
 namespace BaseApp.Web.ViewModels
 {
-    public class AnotherExampleViewModel : IHaveCustomMappings
+    public class AnotherExampleViewModel : IHaveCustomMappings, IHaveExampleSelectList
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullName { get; set; } 
+        public string FullName { get; set; }
+
+        public SelectListItem[] AvailableExamples { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {

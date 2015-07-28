@@ -67,6 +67,7 @@
     <Compile Include="Models\Account\RemoveLoginModel.cs" />
     <Compile Include="Models\Account\SetPasswordModel.cs" />
     <Compile Include="Models\Example.cs" />
+    <Compile Include="Models\LogAction.cs" />
     <Compile Include="Models\User\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
