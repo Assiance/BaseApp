@@ -7,11 +7,12 @@ using Enum = System.Enum;
 
 namespace BaseApp.Web.Filters
 {
+    //Use EditorFor Template INSTEAD PluralSight Application Frameworks (Honeycutt) Demo: Editor Templates
     public class ExampleSelectListPopulatorAttribute : ActionFilterAttribute
     {
         public ApplicationDbContext Context { get; set; }
 
-        //IF EXAMPLE WAS AN ENUM
+        //IF EXAMPLE WAS AN ENUM (Would be better to add enums to an editorFor template int the view)
         //private SelectListItem[] GetAvailableExamples1()
         //{
         //    return Enum.GetValues(typeof(Example))
