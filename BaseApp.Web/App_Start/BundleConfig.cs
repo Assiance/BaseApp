@@ -19,6 +19,17 @@ namespace BaseApp.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new StyleBundle("~/bundles/angularjs").Include(
+                     "~/Scripts/angularjs/angular.js",
+                     "~/Scripts/angularjs/angular-route.js",
+                     "~/Scripts/angularjs/angular-sanitize.js",
+                     "~/Scripts/angularjs/angular-cookies.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/AngularApp").Include(
+                     "~/AngularApp/BaseApp.js",
+                     "~/AngularApp/Home/HomeController.js",
+                     "~/AngularApp/Login/LoginController.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
