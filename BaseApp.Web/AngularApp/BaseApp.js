@@ -2,19 +2,22 @@
     'use strict';
 
     var app = angular.module('BaseApp', [
-        'ngRoute'
+        'ui.router'
     ]);
 
-    app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-        $routeProvider
-            .when('/', {
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('home', {
+                url: '/',
                 templateUrl: 'Home/Dashboard',
                 controller: 'HomeController'
             })
-            .when('/login', {
+            .state('login', {
+                url: '/login',
                 templateUrl: 'Login/Index',
                 controller: 'LoginController'
-            })
-            .otherwise({ redirectTo: '/' });
+            });
+
+            $urlRouterProvider.otherwise('/');
     }]);
 })();

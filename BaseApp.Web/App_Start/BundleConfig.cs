@@ -21,9 +21,9 @@ namespace BaseApp.Web
 
             bundles.Add(new StyleBundle("~/bundles/angularjs").Include(
                      "~/Scripts/angularjs/angular.js",
-                     "~/Scripts/angularjs/angular-route.js",
                      "~/Scripts/angularjs/angular-sanitize.js",
-                     "~/Scripts/angularjs/angular-cookies.js"));
+                     "~/Scripts/angularjs/angular-cookies.js",
+                     "~/Scripts/angularjs-ui/angular-ui-router.js"));
 
             bundles.Add(new StyleBundle("~/bundles/AngularApp").Include(
                      "~/AngularApp/BaseApp.js",
