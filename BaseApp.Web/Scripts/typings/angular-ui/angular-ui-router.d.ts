@@ -5,7 +5,7 @@
 
 /// <reference path="../angularjs/angular.d.ts" />
 
-declare module angular.ui {
+declare module ng.ui {
 
     interface IState {
         name?: string;
