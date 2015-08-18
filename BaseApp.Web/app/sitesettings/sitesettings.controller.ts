@@ -10,12 +10,13 @@
      }
 
      class SiteSettingsController implements ISiteSettingsViewModel {
-         title: string;
-         description: string;
-         themeNames: string[];
-         themeName: string;
 
-         constructor() { }
+         static $inject: string[] = [''];
+         constructor(public title: string,
+             public description: string,
+             public themeNames: string[],
+             public themeName: string) {
+         }
 
          save(): void { }
      }

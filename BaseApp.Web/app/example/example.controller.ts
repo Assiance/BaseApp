@@ -10,10 +10,11 @@
         static $inject: string[] = ['dataAccessService'];
         constructor(private dataAccessService: app.services.IDataAccessService,
             public examples: app.domain.IExample[]) {
+            var vm = this;
 
             var exampleResource = dataAccessService.getExampleResource();
             exampleResource.query((data: app.domain.IExample[]) => {
-                this.examples = data;
+                vm.examples = data;
             });
         }
     }

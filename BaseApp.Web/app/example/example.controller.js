@@ -5,12 +5,12 @@ var app;
         'use strict';
         var ExampleController = (function () {
             function ExampleController(dataAccessService, examples) {
-                var _this = this;
                 this.dataAccessService = dataAccessService;
                 this.examples = examples;
+                var vm = this;
                 var exampleResource = dataAccessService.getExampleResource();
                 exampleResource.query(function (data) {
-                    _this.examples = data;
+                    vm.examples = data;
                 });
             }
             ExampleController.$inject = ['dataAccessService'];

@@ -14,6 +14,6 @@
                 controller: 'app.example.ExampleController',
                 controllerAs: 'vm'
                 // resolve: '' use resolves for loading start up data. ex) Edit Pages
-    });
+            });
     }
 })(); 
