@@ -23,4 +23,4 @@ var app;
             .factory('app.services.SiteSettingsService', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=sitesettings.service.js.map
+//# sourceMappingURL=siteSettings.service.js.map

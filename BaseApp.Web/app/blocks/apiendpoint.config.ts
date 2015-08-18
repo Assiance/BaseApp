@@ -10,4 +10,4 @@
     function config(apiEndpointProvider: app.blocks.IApiEndpointProvider): void {
         apiEndpointProvider.configure('/api');
     }
-})();
+})(); 

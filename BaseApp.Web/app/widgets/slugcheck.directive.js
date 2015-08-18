@@ -15,4 +15,4 @@
         return directive;
     }
 })();
-//# sourceMappingURL=slugcheck.directive.js.map
+//# sourceMappingURL=slugCheck.directive.js.map

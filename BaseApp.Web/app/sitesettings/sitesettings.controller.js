@@ -14,4 +14,4 @@ var app;
             .controller('app.sitesettings.SiteSettingsController', SiteSettingsController);
     })(sitesettings = app.sitesettings || (app.sitesettings = {}));
 })(app || (app = {}));
-//# sourceMappingURL=sitesettings.controller.js.map
+//# sourceMappingURL=siteSettings.controller.js.map
