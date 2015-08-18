@@ -27,6 +27,7 @@ namespace BaseApp.Web
                      "~/Scripts/angularjs/angular.js",
                      "~/Scripts/angularjs/angular-sanitize.js",
                      "~/Scripts/angularjs/angular-cookies.js",
+                     "~/Scripts/angularjs/angular-resource.js",
                      "~/Scripts/angularjs-ui/angular-ui-router.js"));
 
             AddAppBundles(bundles);

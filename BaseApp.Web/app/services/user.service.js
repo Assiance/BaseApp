@@ -7,8 +7,8 @@ var app;
             function UserService($http) {
                 this.$http = $http;
             }
-            UserService.prototype.getById = function (uniqueId) {
-                return this.$http.get('/api/users/' + uniqueId)
+            UserService.prototype.getById = function (userId) {
+                return this.$http.get('/api/users/' + userId)
                     .then(function (response) {
                     return response.data;
                 });

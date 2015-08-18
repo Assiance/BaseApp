@@ -3,7 +3,7 @@ using BaseApp.Web.Infrastructure.Controllers;
 
 namespace BaseApp.Web.Controllers
 {
-    public class LoginController : BaseController
+    public class AngularExampleController : BaseController
     {
         public ActionResult Index()
         {

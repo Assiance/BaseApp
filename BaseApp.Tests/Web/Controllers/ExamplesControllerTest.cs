@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BaseApp.Web.Controllers;
+using BaseApp.Web.Controllers.APIs;
 using NUnit.Framework;
 
 namespace BaseApp.Tests.Web.Controllers
 {
     [TestFixture]
-    public class ValuesControllerTest
+    public class ExamplesControllerTest
     {
         [Test]
         public void Get()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            ExamplesController controller = new ExamplesController();
 
             // Act
             IEnumerable<string> result = controller.Get();
@@ -28,7 +29,7 @@ namespace BaseApp.Tests.Web.Controllers
         public void GetById()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            ExamplesController controller = new ExamplesController();
 
             // Act
             string result = controller.Get(5);
@@ -41,7 +42,7 @@ namespace BaseApp.Tests.Web.Controllers
         public void Post()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            ExamplesController controller = new ExamplesController();
 
             // Act
             controller.Post("value");
@@ -53,7 +54,7 @@ namespace BaseApp.Tests.Web.Controllers
         public void Put()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            ExamplesController controller = new ExamplesController();
 
             // Act
             controller.Put(5, "value");
@@ -65,7 +66,7 @@ namespace BaseApp.Tests.Web.Controllers
         public void Delete()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            ExamplesController controller = new ExamplesController();
 
             // Act
             controller.Delete(5);

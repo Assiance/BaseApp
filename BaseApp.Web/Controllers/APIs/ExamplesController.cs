@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace BaseApp.Web.Controllers
+namespace BaseApp.Web.Controllers.APIs
 {
-    public class ValuesController : ApiController
+    public class ExamplesController : ApiController
     {
         // GET api/values
         public IEnumerable<string> Get()

@@ -1,11 +1,11 @@
 ﻿module app.layout {
     'use strict';
 
-    interface INavigationScope {
+    interface INavigationViewModel {
         fullName: string;
     }
 
-    class NavigationController implements INavigationScope {
+    class NavigationController implements INavigationViewModel {
         fullName: string;
 
         static $inject: string[] = [
@@ -16,7 +16,7 @@
             var vm = this;
 
             userService.getById(currentUser.userId)
-                .then((user: app.services.IUser): void => {
+                .then((user: app.domain.IUser): void => {
                 vm.fullName = user.firstName + ' ' + user.lastName;
             });
         }

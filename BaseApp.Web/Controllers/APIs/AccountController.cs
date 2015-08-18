@@ -10,9 +10,7 @@ using BaseApp.Domain.Models.Account;
 using BaseApp.Domain.Models.User;
 using BaseApp.Web.Providers;
 using BaseApp.Web.Results;
-using BaseApp.Web.ViewModels;
 using BaseApp.Web.ViewModels.Account;
-
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -20,7 +18,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 
-namespace BaseApp.Web.Controllers
+namespace BaseApp.Web.Controllers.APIs
 {
     [Authorize]
     [RoutePrefix("api/Account")]

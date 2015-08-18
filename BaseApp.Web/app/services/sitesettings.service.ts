@@ -5,13 +5,9 @@ module app.services {
      export interface ISiteSettingsService { }
 
      class SiteSettingsService implements ISiteSettingsService {
-         $http: ng.IHttpService;
-         apiEndpoint: app.blocks.IApiEndpointConfig;
 
-         constructor($http: ng.IHttpService,
-             apiEndpoint: app.blocks.IApiEndpointConfig) {
-             this.$http = $http;
-             this.apiEndpoint = apiEndpoint;
+         constructor(private $http: ng.IHttpService,
+             private apiEndpoint: app.blocks.IApiEndpointConfig) {
          }
      }
 

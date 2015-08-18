@@ -7,6 +7,7 @@
          */
         'ngSanitize',
         'ngCookies',
+        'ngResource',
         /*
          *  3rd Party Modules
          */

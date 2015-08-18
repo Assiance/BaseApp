@@ -257,11 +257,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AngularExampleController.cs" />
+    <Compile Include="Controllers\APIs\AccountController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\APIs\ExamplesController.cs" />
     <Compile Include="Filters\ExampleSelectListPopulatorAttribute.cs" />
     <Compile Include="Filters\LogAttribute.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -1178,6 +1179,7 @@
     <Content Include="Views\Example\Edit.cshtml" />
     <Content Include="Views\Example\Index.cshtml" />
     <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="ViewsAngular\AngularExample\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1199,6 +1201,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.config.ts" />
     <TypeScriptCompile Include="app\app.core.module.ts" />
+    <TypeScriptCompile Include="app\app.domain.module.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routes.ts" />
     <TypeScriptCompile Include="app\app.run.ts" />
@@ -1209,10 +1212,16 @@
     <TypeScriptCompile Include="app\blocks\logdecorator.config.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.routes.ts" />
+    <TypeScriptCompile Include="app\example\example.controller.ts" />
+    <TypeScriptCompile Include="app\example\example.model.ts" />
+    <TypeScriptCompile Include="app\example\example.module.ts" />
+    <TypeScriptCompile Include="app\example\example.routes.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\layout\navigation.controller.ts" />
     <TypeScriptCompile Include="app\login\login.module.ts" />
     <TypeScriptCompile Include="app\login\login.routes.ts" />
+    <TypeScriptCompile Include="app\users\user.model.ts" />
+    <TypeScriptCompile Include="app\services\dataAccess.service.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\services\sitesettings.service.ts" />
     <TypeScriptCompile Include="app\services\user.service.ts" />

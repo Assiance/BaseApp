@@ -2,33 +2,18 @@
     'use strict';
 
     export interface IUserService {
-        getById(uniqueId: string): ng.IPromise<IUser>;
-    }
-
-    // This should be moved to a seperate file. into an app.domain module
-    export interface IUser {
-        uniqueId: string;
-        firstName: string;
-        lastName: string;
-        socialNetworks: ISocialNetwork[];
-    }
-
-    // Erase This
-    export interface ISocialNetwork {
-        name: string;
+        getById(userId: string): ng.IPromise<app.domain.IUser>;
     }
 
     class UserService implements IUserService {
-        private $http: ng.IHttpService;
 
         static $inject: string[] = ['http'];
-        constructor($http: ng.IHttpService) {
-            this.$http = $http;
+        constructor(private $http: ng.IHttpService) {
         }
 
-        getById(uniqueId: string): ng.IPromise<IUser> {
-            return this.$http.get('/api/users/' + uniqueId)
-                .then((response: ng.IHttpPromiseCallbackArg<IUser>): IUser => {
+        getById(userId: string): ng.IPromise<app.domain.IUser> {
+            return this.$http.get('/api/users/' + userId)
+                .then((response: ng.IHttpPromiseCallbackArg<app.domain.IUser>): app.domain.IUser => {
                 return response.data;
             });
         }

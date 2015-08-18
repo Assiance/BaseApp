@@ -1,7 +1,7 @@
 ﻿ module app.sitesettings {
      'use strict';
 
-     interface ISiteSettingsScope {
+     interface ISiteSettingsViewModel {
          title: string;
          description: string;
          themeNames: string[];
@@ -9,7 +9,7 @@
          save(): void;
      }
 
-     class SiteSettingsController implements ISiteSettingsScope {
+     class SiteSettingsController implements ISiteSettingsViewModel {
          title: string;
          description: string;
          themeNames: string[];
