@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using BaseApp.DAL.Contexts;
+using BaseApp.Domain.Models;
 using BaseApp.Web.Filters;
 using BaseApp.Web.Infrastructure.Alerts;
 using BaseApp.Web.Infrastructure.Controllers;
-using Microsoft.Web.Mvc;
-using BaseApp.DAL.Contexts;
-using BaseApp.Domain.Models;
 
 namespace BaseApp.Web.Controllers
 {
