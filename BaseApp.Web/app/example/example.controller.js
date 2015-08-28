@@ -1,19 +1,22 @@
 var app;
 (function (app) {
     var example;
-    (function (example) {
+    (function (example_1) {
         'use strict';
         var ExampleController = (function () {
-            function ExampleController(dataAccessService, examples) {
-                this.dataAccessService = dataAccessService;
+            function ExampleController(exampleRepository, examples) {
+                this.exampleRepository = exampleRepository;
                 this.examples = examples;
                 var vm = this;
-                var exampleResource = dataAccessService.getExampleResource();
-                exampleResource.query(function (data) {
+                var example = new app.domain.Example("Shelly");
+                exampleRepository.save(example).$promise.then(function (response) {
+                    var t = response;
+                });
+                exampleRepository.query().$promise.then(function (data) {
                     vm.examples = data;
                 });
             }
-            ExampleController.$inject = ['dataAccessService'];
+            ExampleController.$inject = ['app.services.repositories.ExampleRepository'];
             return ExampleController;
         })();
         angular

@@ -1,15 +1,19 @@
 ﻿module app.domain {
     'use strict';
 
-    export interface IExample {
-        exampleId: number;
-        title: string;
+    //Todo: Change to lowercase props
+    interface IExampleDefinition {
+        Id: number;
+        FirstName: string;
     }
 
-    export class Example implements IExample {
+    export interface IExample extends IExampleDefinition, ng.resource.IResource<app.domain.IExample> {
+    }
 
-        constructor(public exampleId: number,
-            public title: string) {
+    export class Example implements IExampleDefinition {
+        public Id: number;
+
+        constructor(public FirstName: string) {
 
         }
     }

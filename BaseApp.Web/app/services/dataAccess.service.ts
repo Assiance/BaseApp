@@ -2,12 +2,8 @@
     'use strict';
 
     export interface IDataAccessService {
-        getExampleResource(): ng.resource.IResourceClass<IExampleResource>;
+        getExampleResource(): ng.resource.IResourceClass<app.services.repositories.IExampleResource>;
         getUserResource(): ng.resource.IResourceClass<IUserResource>;
-    }
-
-    interface IExampleResource extends ng.resource.IResource<app.domain.IExample> {
-
     }
 
     interface IUserResource extends ng.resource.IResource<app.domain.IUser> {
@@ -19,7 +15,7 @@
         constructor(private $resource: ng.resource.IResourceService) {
         }
 
-        getExampleResource(): ng.resource.IResourceClass<IExampleResource> {
+        getExampleResource(): ng.resource.IResourceClass<app.services.repositories.IExampleResource> {
             return this.$resource('api/examples/:exampleId');
         }
 
@@ -30,5 +26,5 @@
 
     angular
         .module('app.services')
-        .service('dataAccessService', DataAccessService);
+        .service('app.services.dataAccessService', DataAccessService);
 } 

@@ -4,9 +4,8 @@ var app;
     (function (domain) {
         'use strict';
         var Example = (function () {
-            function Example(exampleId, title) {
-                this.exampleId = exampleId;
-                this.title = title;
+            function Example(FirstName) {
+                this.FirstName = FirstName;
             }
             return Example;
         })();

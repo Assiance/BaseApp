@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Optimization;
+using BaseApp.Web.Providers;
 
 namespace BaseApp.Web
 {
@@ -11,6 +14,9 @@ namespace BaseApp.Web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            CleanupUnusedFiles();
+            BundleTable.VirtualPathProvider = new ScriptBundlePathProvider(HostingEnvironment.VirtualPathProvider);
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -23,7 +29,7 @@ namespace BaseApp.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/bundles/angularjs").Include(
+            bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
                      "~/Scripts/angularjs/angular.js",
                      "~/Scripts/angularjs/angular-sanitize.js",
                      "~/Scripts/angularjs/angular-cookies.js",
@@ -36,16 +42,18 @@ namespace BaseApp.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.IgnoreList.Ignore("*Spec.js");
+
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
 
         private static void AddAppBundles(BundleCollection bundles)
         {
             var scriptBundle = new ScriptBundle("~/bundles/appScripts");
-            var adminAppDirFullPath = HttpContext.Current.Server.MapPath(string.Format("~/{0}", _AppDirectory));
-            if (Directory.Exists(adminAppDirFullPath))
+            var appDirFullPath = HttpContext.Current.Server.MapPath(string.Format("~/{0}", _AppDirectory));
+            if (Directory.Exists(appDirFullPath))
             {
                 scriptBundle.Include(
 
@@ -63,6 +71,26 @@ namespace BaseApp.Web
                     .IncludeDirectory(string.Format("~/{0}", _AppDirectory), "*.js", true);
             }
             bundles.Add(scriptBundle);
+        }
+
+        [Conditional("DEBUG")]
+        private static void CleanupUnusedFiles()
+        {
+            var appDirFullPath = HttpContext.Current.Server.MapPath(string.Format("~/{0}", _AppDirectory));
+            if (Directory.Exists(appDirFullPath))
+            {
+                var jsFiles = Directory.GetFiles(appDirFullPath, "*.js", SearchOption.AllDirectories);
+                foreach (var jsFile in jsFiles)
+                {
+                    var tsFile = jsFile.Remove(jsFile.Length - 3, 3) + ".ts";
+                    if (!File.Exists(tsFile) && !jsFile.EndsWith("spec.js"))
+                    {
+                        File.Delete(jsFile);
+                        var map = jsFile + ".map";
+                        if (File.Exists(map)) File.Delete(map);
+                    }
+                }
+            }
         }
     }
 }

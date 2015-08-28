@@ -21,6 +21,6 @@
 
     angular
         .module('app.services')
-        .service('app.service.UserService',
+        .service('app.services.UserService',
             UserService);
 } 

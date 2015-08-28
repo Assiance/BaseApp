@@ -18,7 +18,7 @@ var app;
         })();
         angular
             .module('app.services')
-            .service('dataAccessService', DataAccessService);
+            .service('app.services.dataAccessService', DataAccessService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 //# sourceMappingURL=dataAccess.service.js.map
