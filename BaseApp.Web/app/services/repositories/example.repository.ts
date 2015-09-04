@@ -10,17 +10,16 @@
     }
 
     class ExampleRepository extends BaseRepository<app.domain.IExample> implements IExampleRepository {
+        constructor(private $resource: ng.resource.IResourceService) {
+            super();
 
-        constructor(dataAccessService: app.services.IDataAccessService) {
-            super(dataAccessService);
-
-            this.context = dataAccessService.getExampleResource();
+            this.context = this.$resource('api/examples/:exampleId');
         }
     }
 
-    factory.$inject = ['app.services.dataAccessService'];
-    function factory(dataAccessService: app.services.IDataAccessService): IExampleRepository {
-        return new ExampleRepository(dataAccessService);
+    factory.$inject = ['$resource'];
+    function factory($resource: ng.resource.IResourceService): IExampleRepository {
+        return new ExampleRepository($resource);
     }
 
     angular

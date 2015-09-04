@@ -13,15 +13,16 @@ var app;
             'use strict';
             var ExampleRepository = (function (_super) {
                 __extends(ExampleRepository, _super);
-                function ExampleRepository(dataAccessService) {
-                    _super.call(this, dataAccessService);
-                    this.context = dataAccessService.getExampleResource();
+                function ExampleRepository($resource) {
+                    _super.call(this);
+                    this.$resource = $resource;
+                    this.context = this.$resource('api/examples/:exampleId');
                 }
                 return ExampleRepository;
             })(repositories.BaseRepository);
-            factory.$inject = ['app.services.dataAccessService'];
-            function factory(dataAccessService) {
-                return new ExampleRepository(dataAccessService);
+            factory.$inject = ['$resource'];
+            function factory($resource) {
+                return new ExampleRepository($resource);
             }
             angular
                 .module('app.services')

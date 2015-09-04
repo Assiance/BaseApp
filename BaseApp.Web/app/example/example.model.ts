@@ -1,7 +1,7 @@
 ﻿module app.domain {
     'use strict';
 
-    //Todo: Change to lowercase props
+    // Todo: Change to lowercase props
     interface IExampleDefinition {
         Id: number;
         FirstName: string;

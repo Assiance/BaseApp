@@ -12,13 +12,7 @@
             public examples: app.domain.IExample[]) {
             var vm = this;
 
-            var example = new app.domain.Example("Shelly");
-
-            exampleRepository.save(example).$promise.then((response) => {
-                var t = response;
-            });
-
-            exampleRepository.query().$promise.then((data: app.domain.IExample[]) => {
+            exampleRepository.context.query((data: app.domain.IExample[]) => {
                 vm.examples = data;
             });
         }

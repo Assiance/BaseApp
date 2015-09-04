@@ -1,18 +1,14 @@
 var app;
 (function (app) {
     var example;
-    (function (example_1) {
+    (function (example) {
         'use strict';
         var ExampleController = (function () {
             function ExampleController(exampleRepository, examples) {
                 this.exampleRepository = exampleRepository;
                 this.examples = examples;
                 var vm = this;
-                var example = new app.domain.Example("Shelly");
-                exampleRepository.save(example).$promise.then(function (response) {
-                    var t = response;
-                });
-                exampleRepository.query().$promise.then(function (data) {
+                exampleRepository.context.query(function (data) {
                     vm.examples = data;
                 });
             }

@@ -1224,7 +1224,6 @@
     <TypeScriptCompile Include="app\services\repositories\base.repository.ts" />
     <TypeScriptCompile Include="app\services\repositories\example.repository.ts" />
     <TypeScriptCompile Include="app\users\user.model.ts" />
-    <TypeScriptCompile Include="app\services\dataAccess.service.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\services\siteSettings.service.ts" />
     <TypeScriptCompile Include="app\services\user.service.ts" />
