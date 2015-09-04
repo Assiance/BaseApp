@@ -4,16 +4,15 @@ var app;
     (function (example) {
         'use strict';
         var ExampleController = (function () {
-            function ExampleController(dataAccessService, examples) {
-                this.dataAccessService = dataAccessService;
+            function ExampleController(exampleRepository, examples) {
+                this.exampleRepository = exampleRepository;
                 this.examples = examples;
                 var vm = this;
-                var exampleResource = dataAccessService.getExampleResource();
-                exampleResource.query(function (data) {
+                exampleRepository.context.query(function (data) {
                     vm.examples = data;
                 });
             }
-            ExampleController.$inject = ['dataAccessService'];
+            ExampleController.$inject = ['app.services.repositories.ExampleRepository'];
             return ExampleController;
         })();
         angular

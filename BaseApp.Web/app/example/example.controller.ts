@@ -7,13 +7,12 @@
 
     class ExampleController implements IExampleViewModel {
 
-        static $inject: string[] = ['dataAccessService'];
-        constructor(private dataAccessService: app.services.IDataAccessService,
+        static $inject: string[] = ['app.services.repositories.ExampleRepository'];
+        constructor(private exampleRepository: app.services.repositories.IExampleRepository,
             public examples: app.domain.IExample[]) {
             var vm = this;
 
-            var exampleResource = dataAccessService.getExampleResource();
-            exampleResource.query((data: app.domain.IExample[]) => {
+            exampleRepository.context.query((data: app.domain.IExample[]) => {
                 vm.examples = data;
             });
         }
