@@ -8,7 +8,7 @@
         $stateProvider
             .state('home', {
             url: '/',
-            templateUrl: 'Home/Dashboard'
+            templateUrl: 'Dashboard/Index'
         });
     }
 })();

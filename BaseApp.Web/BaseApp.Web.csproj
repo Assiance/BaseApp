@@ -260,8 +260,10 @@
     <Compile Include="Controllers\AngularExampleController.cs" />
     <Compile Include="Controllers\APIs\AccountController.cs" />
     <Compile Include="Controllers\APIs\ExamplesController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Filters\ExampleSelectListPopulatorAttribute.cs" />
     <Compile Include="Filters\LogAttribute.cs" />
@@ -421,6 +423,11 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="app\AngularExample\Index.cshtml" />
+    <Content Include="app\_ViewStart.cshtml" />
+    <Content Include="app\dashboard\Index.cshtml" />
+    <Content Include="app\layout\Index.cshtml" />
+    <Content Include="app\login\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\angularjs\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\angularjs\i18n\angular-locale_aa-er.js" />
@@ -1927,14 +1934,6 @@
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="tslint.json" />
-    <Content Include="ViewsAngular\_ViewStart.cshtml" />
-    <Content Include="ViewsAngular\Home\Index.cshtml" />
-    <Content Include="ViewsAngular\Login\Index.cshtml" />
-    <Content Include="ViewsAngular\Shared\_Alerts.cshtml" />
-    <Content Include="ViewsAngular\Shared\_Layout.cshtml" />
-    <Content Include="ViewsAngular\Shared\Error.cshtml" />
-    <Content Include="ViewsAngular\Web.config" />
-    <Content Include="ViewsAngular\Home\Dashboard.cshtml" />
     <Content Include="Views\_ViewStart.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -1959,7 +1958,6 @@
     <Content Include="Views\Example\Edit.cshtml" />
     <Content Include="Views\Example\Index.cshtml" />
     <Content Include="Views\Shared\_Alerts.cshtml" />
-    <Content Include="ViewsAngular\AngularExample\Index.cshtml" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
@@ -1993,10 +1991,10 @@
     <TypeScriptCompile Include="app\blocks\logDecorator.config.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.routes.ts" />
-    <TypeScriptCompile Include="app\example\example.controller.ts" />
-    <TypeScriptCompile Include="app\example\example.model.ts" />
-    <TypeScriptCompile Include="app\example\example.module.ts" />
-    <TypeScriptCompile Include="app\example\example.routes.ts" />
+    <TypeScriptCompile Include="app\AngularExample\example.controller.ts" />
+    <TypeScriptCompile Include="app\AngularExample\example.model.ts" />
+    <TypeScriptCompile Include="app\AngularExample\example.module.ts" />
+    <TypeScriptCompile Include="app\AngularExample\example.routes.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\layout\navigation.controller.ts" />
     <TypeScriptCompile Include="app\login\login.module.ts" />
