@@ -23,7 +23,8 @@
     <IISExpressUseClassicPipelineMode />
     <NuGetPackageImportStamp>2ece79dc</NuGetPackageImportStamp>
     <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
-    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1997,10 +1998,10 @@
     <TypeScriptCompile Include="app\AngularExample\example.routes.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\layout\navigation.controller.ts" />
+    <TypeScriptCompile Include="app\login\login.controller.ts" />
     <TypeScriptCompile Include="app\login\login.module.ts" />
     <TypeScriptCompile Include="app\login\login.routes.ts" />
-    <TypeScriptCompile Include="app\services\repositories\base.repository.ts" />
-    <TypeScriptCompile Include="app\services\repositories\example.repository.ts" />
+    <TypeScriptCompile Include="app\services\context.service.ts" />
     <TypeScriptCompile Include="app\users\user.model.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\services\siteSettings.service.ts" />

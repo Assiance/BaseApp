@@ -13,7 +13,7 @@ var app;
                     return response.data;
                 });
             };
-            UserService.$inject = ['http'];
+            UserService.$inject = ['$http'];
             return UserService;
         })();
         angular

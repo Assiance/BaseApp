@@ -4,15 +4,15 @@ var app;
     (function (example) {
         'use strict';
         var ExampleController = (function () {
-            function ExampleController(exampleRepository, examples) {
-                this.exampleRepository = exampleRepository;
+            function ExampleController(context, examples) {
+                this.context = context;
                 this.examples = examples;
                 var vm = this;
-                exampleRepository.context.query(function (data) {
+                context.examples().query(function (data) {
                     vm.examples = data;
                 });
             }
-            ExampleController.$inject = ['app.services.repositories.ExampleRepository'];
+            ExampleController.$inject = ['app.services.ContextService'];
             return ExampleController;
         })();
         angular

@@ -28,11 +28,14 @@ namespace BaseApp.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Example example = db.Examples.Find(id);
+            
             if (example == null)
             {
                 return HttpNotFound();
             }
+            
             return View(example);
         }
 
@@ -69,11 +72,14 @@ namespace BaseApp.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Example example = db.Examples.Find(id);
+            
             if (example == null)
             {
                 return HttpNotFound().WithError("Example not found");
             }
+            
             return View(example);
         }
 
@@ -90,6 +96,7 @@ namespace BaseApp.Web.Controllers
                 db.SaveChanges();
                 return RedirectToAction<ExampleController>(c => c.Index()).WithSuccess("Example Edited");
             }
+            
             return View(example).WithError("Error with Example");
         }
 
@@ -100,11 +107,14 @@ namespace BaseApp.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             Example example = db.Examples.Find(id);
+            
             if (example == null)
             {
                 return HttpNotFound().WithError("Example not found");
             }
+            
             return View(example);
         }
 
@@ -117,6 +127,7 @@ namespace BaseApp.Web.Controllers
             Example example = db.Examples.Find(id);
             db.Examples.Remove(example);
             db.SaveChanges();
+            
             return RedirectToAction<ExampleController>(a => a.Index()).WithSuccess("Example deleted");
         }
 
@@ -126,6 +137,7 @@ namespace BaseApp.Web.Controllers
             {
                 db.Dispose();
             }
+            
             base.Dispose(disposing);
         }
     }

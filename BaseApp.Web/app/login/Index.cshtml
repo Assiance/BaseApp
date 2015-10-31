@@ -1,1 +1,35 @@
-﻿Login Page {{ 4 * 4 }}
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container body-content" ng-controller="app.login.LoginController as vm">
+        <h2>Login Page</h2>
+{{vm.title}}
+        <section>
+            <form action="/token">
+                <div>
+                    <label for="username">Username: </label>
+                    <input id="username" />
+                </div>
+                <div>
+                    <label for="password">Password: </label>
+                    <input id="password" />
+                </div>
+
+                <input type="submit" />
+            </form>
+        </section>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angularjs")
+    @Scripts.Render("~/bundles/appScripts")
+</body>
+</html>

@@ -18,7 +18,8 @@ var app;
         })();
         angular
             .module('app.blocks')
-            .provider('app.blocks.ApiEndpoint', ApiEndpointProvider);
+            .provider('app.blocks.ApiEndpoint', // Note: Do not append provider on providers
+        ApiEndpointProvider);
     })(blocks = app.blocks || (app.blocks = {}));
 })(app || (app = {}));
 //# sourceMappingURL=apiEndpoint.provider.js.map

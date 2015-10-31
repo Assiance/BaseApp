@@ -3,9 +3,14 @@
     angular
         .module('app')
         .config(config);
-    config.$inject = ['$urlRouterProvider'];
-    function config($urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+    config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    function config($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('login', {
+            url: '/login',
+            templateUrl: 'Login/Index'
+        });
+        $urlRouterProvider.otherwise('/login');
     }
 })();
 //# sourceMappingURL=app.routes.js.map

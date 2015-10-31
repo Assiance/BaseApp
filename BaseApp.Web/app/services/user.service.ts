@@ -7,7 +7,7 @@
 
     class UserService implements IUserService {
 
-        static $inject: string[] = ['http'];
+        static $inject: string[] = ['$http'];
         constructor(private $http: ng.IHttpService) {
         }
 
