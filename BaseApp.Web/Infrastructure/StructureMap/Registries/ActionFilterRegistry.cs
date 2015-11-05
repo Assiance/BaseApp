@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Web.Mvc;
-
 using StructureMap;
 using StructureMap.Configuration.DSL;
 using StructureMap.TypeRules;
 
-namespace BaseApp.Web.Infrastructure
+namespace BaseApp.Web.Infrastructure.StructureMap.Registries
 {
     public class ActionFilterRegistry : Registry
     {

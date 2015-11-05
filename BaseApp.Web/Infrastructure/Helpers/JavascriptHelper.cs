@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace BaseApp.Web.Helpers
+namespace BaseApp.Web.Infrastructure.Helpers
 {
     public static class JavascriptHelper
     {

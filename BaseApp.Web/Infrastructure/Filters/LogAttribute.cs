@@ -2,9 +2,8 @@
 using System.Web.Mvc;
 using BaseApp.DAL.Contexts;
 using BaseApp.Domain.Models;
-using BaseApp.Web.Infrastructure;
 
-namespace BaseApp.Web.Filters
+namespace BaseApp.Web.Infrastructure.Filters
 {
     public class LogAttribute : ActionFilterAttribute
     {

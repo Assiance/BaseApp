@@ -6,6 +6,8 @@ using System.Web.Routing;
 
 using BaseApp.Web.Areas.HelpPage.Controllers;
 using BaseApp.Web.Infrastructure;
+using BaseApp.Web.Infrastructure.StructureMap;
+using BaseApp.Web.Infrastructure.StructureMap.Registries;
 using BaseApp.Web.Infrastructure.Tasks;
 
 using StructureMap;

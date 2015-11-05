@@ -1,8 +1,7 @@
 ﻿using System;
 
 using BaseApp.DAL.Contexts;
-using BaseApp.Web.Providers;
-
+using BaseApp.Web.Infrastructure.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;

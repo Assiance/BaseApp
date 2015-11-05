@@ -1,11 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using BaseApp.DAL.Contexts;
-using BaseApp.Domain.Models;
-using StyleCop.CSharp;
-using Enum = System.Enum;
 
-namespace BaseApp.Web.Filters
+namespace BaseApp.Web.Infrastructure.Filters
 {
     //Use EditorFor Template INSTEAD PluralSight Application Frameworks (Honeycutt) Demo: Editor Templates
     public class ExampleSelectListPopulatorAttribute : ActionFilterAttribute

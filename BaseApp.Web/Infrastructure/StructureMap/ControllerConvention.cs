@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
-
-using BaseApp.Web.Areas.HelpPage.Controllers;
-
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
 using StructureMap.Pipeline;
 using StructureMap.TypeRules;
 
-namespace BaseApp.Web.Infrastructure
+namespace BaseApp.Web.Infrastructure.StructureMap
 {
     public class ControllerConvention : IRegistrationConvention
     {

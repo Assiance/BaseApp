@@ -4,9 +4,9 @@ using System.Net;
 using System.Web.Mvc;
 using BaseApp.DAL.Contexts;
 using BaseApp.Domain.Models;
-using BaseApp.Web.Filters;
 using BaseApp.Web.Infrastructure.Alerts;
 using BaseApp.Web.Infrastructure.Controllers;
+using BaseApp.Web.Infrastructure.Filters;
 
 namespace BaseApp.Web.Controllers
 {

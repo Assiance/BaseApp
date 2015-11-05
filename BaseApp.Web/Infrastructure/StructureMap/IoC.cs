@@ -1,6 +1,6 @@
 ﻿using StructureMap;
 
-namespace BaseApp.Web.Infrastructure
+namespace BaseApp.Web.Infrastructure.StructureMap
 {
     public static class IoC
     {

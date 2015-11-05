@@ -1,16 +1,16 @@
 ﻿using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
 
-namespace BaseApp.Web.Infrastructure
+namespace BaseApp.Web.Infrastructure.StructureMap.Registries
 {
-    public class StandardRegistry : Registry
+    public class ControllerRegistry : Registry
     {
-        public StandardRegistry()
+        public ControllerRegistry()
         {
             this.Scan(scan =>
                     {
                         scan.TheCallingAssembly();
-                        scan.WithDefaultConventions();
+                        scan.With(new ControllerConvention());
                     });
         }
     }

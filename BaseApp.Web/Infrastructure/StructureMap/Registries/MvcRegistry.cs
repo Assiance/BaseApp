@@ -2,10 +2,9 @@
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
-
 using StructureMap.Configuration.DSL;
 
-namespace BaseApp.Web.Infrastructure
+namespace BaseApp.Web.Infrastructure.StructureMap.Registries
 {
     public class MvcRegistry : Registry
     {

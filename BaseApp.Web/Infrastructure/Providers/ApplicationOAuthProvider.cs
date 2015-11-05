@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
 using BaseApp.Domain.Models.User;
-
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 
-namespace BaseApp.Web.Providers
+namespace BaseApp.Web.Infrastructure.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

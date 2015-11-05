@@ -2,7 +2,6 @@
 using AutoMapper;
 
 using BaseApp.Domain.Models;
-using BaseApp.Web.Filters;
 using BaseApp.Web.Infrastructure.Mapping;
 
 namespace BaseApp.Web.ViewModels

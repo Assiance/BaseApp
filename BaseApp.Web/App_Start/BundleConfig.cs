@@ -3,7 +3,7 @@ using System.IO;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Optimization;
-using BaseApp.Web.Providers;
+using BaseApp.Web.Infrastructure.Providers;
 
 namespace BaseApp.Web
 {

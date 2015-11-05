@@ -2,8 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
-using BaseApp.Web.ActionResults;
-using BaseApp.Web.Filters;
+using BaseApp.Web.Infrastructure.ActionResults;
 using Microsoft.Web.Mvc;
 
 namespace BaseApp.Web.Infrastructure.Controllers

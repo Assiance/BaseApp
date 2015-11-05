@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-
 using StructureMap;
 
-namespace BaseApp.Web.Infrastructure
+namespace BaseApp.Web.Infrastructure.StructureMap
 {
     public class StructureMapFilterProvider : FilterAttributeFilterProvider
     {

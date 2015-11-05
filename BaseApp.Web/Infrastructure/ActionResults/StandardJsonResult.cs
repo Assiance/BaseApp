@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace BaseApp.Web.ActionResults
+namespace BaseApp.Web.Infrastructure.ActionResults
 {
     public class StandardJsonResult : JsonResult
     {

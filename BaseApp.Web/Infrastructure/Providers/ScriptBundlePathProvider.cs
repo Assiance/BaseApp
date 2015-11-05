@@ -1,6 +1,6 @@
 ﻿using System.Web.Hosting;
 
-namespace BaseApp.Web.Providers
+namespace BaseApp.Web.Infrastructure.Providers
 {
     public class ScriptBundlePathProvider : VirtualPathProvider
     {
