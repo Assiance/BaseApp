@@ -23,6 +23,6 @@ module app.login {
 
     angular
         .module('app.login')
-        .controller('app.login.LoginController',
+        .controller('loginController',
             LoginController);
 }

@@ -11,7 +11,7 @@
             .state('example', {
                 url: '/example',
                 templateUrl: 'AngularExample/Index',
-                controller: 'app.example.ExampleController',
+                controller: 'exampleController',
                 controllerAs: 'vm'
                 // resolve: '' use resolves for loading start up data. ex) Edit Pages
             });

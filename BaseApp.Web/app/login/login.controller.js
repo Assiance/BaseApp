@@ -17,7 +17,6 @@ var app;
         })();
         angular
             .module('app.login')
-            .controller('app.login.LoginController', LoginController);
+            .controller('loginController', LoginController);
     })(login = app.login || (app.login = {}));
 })(app || (app = {}));
-//# sourceMappingURL=login.controller.js.map

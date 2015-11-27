@@ -12,12 +12,11 @@ var app;
                     vm.examples = data;
                 });
             }
-            ExampleController.$inject = ['app.services.ContextService'];
+            ExampleController.$inject = ['contextService'];
             return ExampleController;
         })();
         angular
             .module('app.example')
-            .controller('app.example.ExampleController', ExampleController);
+            .controller('exampleController', ExampleController);
     })(example = app.example || (app.example = {}));
 })(app || (app = {}));
-//# sourceMappingURL=example.controller.js.map

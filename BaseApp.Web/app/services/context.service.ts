@@ -1,7 +1,7 @@
 ﻿module app.services {
     'use strict';
 
-    export interface IExampleResource extends ng.resource.IResource<app.domain.IExample> {
+    export interface IExampleResource extends ng.resource.IResource<domain.IExample> {
 
     }
 
@@ -25,6 +25,6 @@
 
     angular
         .module('app.services')
-        .factory('app.services.ContextService',
+        .factory('contextService',
         factory);
 }

@@ -16,7 +16,6 @@ var app;
         })();
         angular
             .module('app.sitesettings')
-            .controller('app.sitesettings.SiteSettingsController', SiteSettingsController);
+            .controller('siteSettingsController', SiteSettingsController);
     })(sitesettings = app.sitesettings || (app.sitesettings = {}));
 })(app || (app = {}));
-//# sourceMappingURL=siteSettings.controller.js.map

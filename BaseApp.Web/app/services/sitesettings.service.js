@@ -13,14 +13,13 @@ var app;
         })();
         factory.$inject = [
             '$http',
-            'app.blocks.ApiEndpoint'
+            'apiEndpoint'
         ];
         function factory($http, apiEndpoint) {
             return new SiteSettingsService($http, apiEndpoint);
         }
         angular
             .module('app.services')
-            .factory('app.services.SiteSettingsService', factory);
+            .factory('siteSettingsService', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=siteSettings.service.js.map

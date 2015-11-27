@@ -13,12 +13,11 @@ var app;
             }
             NavigationController.$inject = [
                 'currentUser',
-                'app.services.UserService'];
+                'userService'];
             return NavigationController;
         })();
         angular
             .module('app.layout')
-            .controller('app.layout.NavigationController', NavigationController);
+            .controller('navigationController', NavigationController);
     })(layout = app.layout || (app.layout = {}));
 })(app || (app = {}));
-//# sourceMappingURL=navigation.controller.js.map

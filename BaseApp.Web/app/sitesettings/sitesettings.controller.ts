@@ -23,6 +23,6 @@
 
      angular
          .module('app.sitesettings')
-         .controller('app.sitesettings.SiteSettingsController',
+         .controller('siteSettingsController',
              SiteSettingsController);
  }

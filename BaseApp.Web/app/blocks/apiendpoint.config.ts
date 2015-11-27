@@ -5,7 +5,7 @@
         .module('app.blocks')
         .config(config);
 
-    config.$inject = ['app.blocks.ApiEndpointProvider'];
+    config.$inject = ['apiEndpointProvider'];
 
     function config(apiEndpointProvider: app.blocks.IApiEndpointProvider): void {
         apiEndpointProvider.configure('/api');

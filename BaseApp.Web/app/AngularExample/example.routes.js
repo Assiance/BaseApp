@@ -9,9 +9,8 @@
             .state('example', {
             url: '/example',
             templateUrl: 'AngularExample/Index',
-            controller: 'app.example.ExampleController',
+            controller: 'exampleController',
             controllerAs: 'vm'
         });
     }
 })();
-//# sourceMappingURL=example.routes.js.map

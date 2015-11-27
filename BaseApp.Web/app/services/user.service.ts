@@ -2,7 +2,7 @@
     'use strict';
 
     export interface IUserService {
-        getById(userId: string): ng.IPromise<app.domain.IUser>;
+        getById(userId: string): ng.IPromise<domain.IUser>;
     }
 
     class UserService implements IUserService {
@@ -11,9 +11,9 @@
         constructor(private $http: ng.IHttpService) {
         }
 
-        getById(userId: string): ng.IPromise<app.domain.IUser> {
+        getById(userId: string): ng.IPromise<domain.IUser> {
             return this.$http.get('/api/users/' + userId)
-                .then((response: ng.IHttpPromiseCallbackArg<app.domain.IUser>): app.domain.IUser => {
+                .then((response: ng.IHttpPromiseCallbackArg<domain.IUser>): domain.IUser => {
                 return response.data;
             });
         }
@@ -21,6 +21,6 @@
 
     angular
         .module('app.services')
-        .service('app.services.UserService',
+        .service('userService',
             UserService);
 } 

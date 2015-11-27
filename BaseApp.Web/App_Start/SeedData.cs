@@ -28,6 +28,8 @@ namespace BaseApp.Web
                 _context.Users.AddOrUpdate(new ApplicationUser()
                 {
                     UserName = "TestUser",
+                    Email = "Foo@Test.com",
+                    EmailConfirmed = true,
                     PasswordHash = password
                 });
 

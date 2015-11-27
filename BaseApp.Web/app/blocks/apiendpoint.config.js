@@ -3,9 +3,8 @@
     angular
         .module('app.blocks')
         .config(config);
-    config.$inject = ['app.blocks.ApiEndpointProvider'];
+    config.$inject = ['apiEndpointProvider'];
     function config(apiEndpointProvider) {
         apiEndpointProvider.configure('/api');
     }
 })();
-//# sourceMappingURL=apiEndpoint.config.js.map

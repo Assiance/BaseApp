@@ -25,6 +25,6 @@
 
     angular
         .module('app.blocks')
-        .provider('app.blocks.ApiEndpoint', // Note: Do not append provider on providers
+        .provider('apiEndpoint', // Note: Do not append provider on providers
             ApiEndpointProvider);
 } 

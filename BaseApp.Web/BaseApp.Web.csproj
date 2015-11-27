@@ -1998,10 +1998,12 @@
     <TypeScriptCompile Include="app\AngularExample\example.routes.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\layout\navigation.controller.ts" />
+    <TypeScriptCompile Include="app\login\profile.ts" />
     <TypeScriptCompile Include="app\login\login.controller.ts" />
     <TypeScriptCompile Include="app\login\login.module.ts" />
     <TypeScriptCompile Include="app\login\login.routes.ts" />
     <TypeScriptCompile Include="app\services\context.service.ts" />
+    <TypeScriptCompile Include="app\services\currentUser.service.ts" />
     <TypeScriptCompile Include="app\users\user.model.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\services\siteSettings.service.ts" />
