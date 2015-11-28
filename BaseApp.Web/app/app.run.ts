@@ -17,7 +17,7 @@
 
     function run($rootScope: ng.IRootScopeService,
         $cookies: IAppCookies,
-        currentUser: ICurrentUser): void {
+        currentUser: app.values.ICurrentUser): void {
 
         $rootScope.$on('$routeChangeError', (): void => {
         });

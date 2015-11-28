@@ -8,8 +8,8 @@ module app.login {
 
     class LoginController implements ILoginViewModel {
 
-        static $inject: string[] = [];
-        constructor(public title: string) {
+        static $inject: string[] = ['appSettings'];
+        constructor(public title: string, appSettings: app.constants.IAppSettings) {
             var vm = this;
 
             vm.title = 'login';

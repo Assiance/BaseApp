@@ -123,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseApp.Web\BaseApp.Web.csproj">
-      <Project>{CA4F2241-8666-4814-B012-ADF0AF1398DE}</Project>
+      <Project>{ca4f2241-8666-4814-b012-adf0af1398de}</Project>
       <Name>BaseApp.Web</Name>
     </ProjectReference>
   </ItemGroup>

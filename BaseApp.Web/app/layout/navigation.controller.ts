@@ -11,7 +11,7 @@
         static $inject: string[] = [
             'currentUser',
             'userService'];
-        constructor(currentUser: ICurrentUser,
+        constructor(currentUser: app.values.ICurrentUser,
             userService: services.IUserService) {
             var vm = this;
 

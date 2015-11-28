@@ -4,7 +4,7 @@ var app;
     (function (login) {
         'use strict';
         var LoginController = (function () {
-            function LoginController(title) {
+            function LoginController(title, appSettings) {
                 this.title = title;
                 var vm = this;
                 vm.title = 'login';
@@ -12,7 +12,7 @@ var app;
             }
             LoginController.prototype.activate = function () {
             };
-            LoginController.$inject = [];
+            LoginController.$inject = ['appSettings'];
             return LoginController;
         })();
         angular
