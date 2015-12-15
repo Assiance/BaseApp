@@ -1,4 +1,3 @@
-/* tslint:disable */
 // Type definitions for Angular JS 1.3 (ngMock, ngMockE2E module)
 // Project: http://angularjs.org
 // Definitions by: Diego Vilar <http://github.com/diegovilar>, Tony Curtis <http://github.com/daltin>
@@ -7,6 +6,11 @@
 /// <reference path="angular.d.ts" />
 
 declare module "angular-mocks/ngMock" {
+    var _: string;
+    export = _;
+}
+
+declare module "angular-mocks/ngMockE2E" {
     var _: string;
     export = _;
 }

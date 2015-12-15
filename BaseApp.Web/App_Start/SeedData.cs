@@ -1,39 +1,35 @@
-﻿using System.Data.Entity.Migrations;
-using System.Linq;
-
-using BaseApp.DAL.Contexts;
-using BaseApp.Domain.Models.User;
+﻿using System.Linq;
+using BaseApp.Domain.Services.Interfaces;
+using BaseApp.Model.Models.Domain;
 using BaseApp.Web.Infrastructure.Tasks;
 using Microsoft.AspNet.Identity;
 
-namespace BaseApp.Web
+namespace BaseApp.Data
 {
     public class SeedData : IRunAtStartup
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUserService _userService;
 
-        public SeedData(ApplicationDbContext context)
+        public SeedData(IUserService userService)
         {
             //Todo: Recode this to use the repositories
             //Todo: Create SeedData for other Context
-            this._context = context;
+            _userService = userService;
         }
 
         public void Execute()
         {
             var passwordHash = new PasswordHasher();
             string password = passwordHash.HashPassword("test");
-            if (!_context.Users.Any())
+            if (!_userService.Users.Any())
             {
-                _context.Users.AddOrUpdate(new ApplicationUser()
+                _userService.CreateUser(new User()
                 {
                     UserName = "TestUser",
                     Email = "Foo@Test.com",
                     EmailConfirmed = true,
                     PasswordHash = password
                 });
-
-                _context.SaveChanges();
             }
         }
     }

@@ -14,3 +14,4 @@
         currentUser.userId = $cookies.userId; // Look into what this is doing
     }
 })();
+//# sourceMappingURL=app.run.js.map

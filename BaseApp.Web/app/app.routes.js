@@ -13,3 +13,4 @@
         $urlRouterProvider.otherwise('/login');
     }
 })();
+//# sourceMappingURL=app.routes.js.map

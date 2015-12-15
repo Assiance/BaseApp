@@ -7,7 +7,7 @@
         FirstName: string;
     }
 
-    export interface IExample extends IExampleDefinition, ng.resource.IResource<IExample> {
+    export interface IExample extends IExampleDefinition, ng.resource.IResource<IExampleDefinition> {
     }
 
     export class Example implements IExampleDefinition {

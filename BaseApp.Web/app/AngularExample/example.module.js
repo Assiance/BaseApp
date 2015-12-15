@@ -3,3 +3,4 @@
     angular
         .module('app.example', []);
 })();
+//# sourceMappingURL=example.module.js.map

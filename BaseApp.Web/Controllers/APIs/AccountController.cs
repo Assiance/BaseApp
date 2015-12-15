@@ -6,8 +6,8 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using BaseApp.Domain.Models.Account;
-using BaseApp.Domain.Models.User;
+using BaseApp.Data.Models.User;
+using BaseApp.Model.Models.Domain.Account;
 using BaseApp.Web.Infrastructure.ActionResults;
 using BaseApp.Web.Infrastructure.Providers;
 using BaseApp.Web.ViewModels.Account;
@@ -251,7 +251,7 @@ namespace BaseApp.Web.Controllers.APIs
                 return new ChallengeResult(provider, this);
             }
 
-            ApplicationUser user = await this.UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            ApplicationUserEntity user = await this.UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -329,7 +329,7 @@ namespace BaseApp.Web.Controllers.APIs
                 return this.BadRequest(this.ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUserEntity() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await this.UserManager.CreateAsync(user, model.Password);
 
@@ -358,7 +358,7 @@ namespace BaseApp.Web.Controllers.APIs
                 return this.InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUserEntity() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await this.UserManager.CreateAsync(user);
             if (!result.Succeeded)

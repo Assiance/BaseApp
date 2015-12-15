@@ -20,3 +20,4 @@ var app;
             .controller('exampleController', ExampleController);
     })(example = app.example || (app.example = {}));
 })(app || (app = {}));
+//# sourceMappingURL=example.controller.js.map

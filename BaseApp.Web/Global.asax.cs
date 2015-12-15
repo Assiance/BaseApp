@@ -3,7 +3,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
+using BaseApp.Core.Tasks;
 using BaseApp.Web.Areas.HelpPage.Controllers;
 using BaseApp.Web.Infrastructure;
 using BaseApp.Web.Infrastructure.StructureMap;

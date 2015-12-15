@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseApp.Web", "BaseApp.Web\BaseApp.Web.csproj", "{CA4F2241-8666-4814-B012-ADF0AF1398DE}"
 EndProject
@@ -9,9 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseApp.Tests", "BaseApp.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseApp.Domain", "BaseApp.Domain\BaseApp.Domain.csproj", "{475D2730-6593-46F2-9CF3-77737780A91A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseApp.DAL", "BaseApp.DAL\BaseApp.DAL.csproj", "{661452CB-2D15-4144-9DF8-62038B2CAEB4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{080AC359-CD7A-4CFA-85B6-C7F2DCBC7759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseApp.Data", "BaseApp.Data\BaseApp.Data.csproj", "{661452CB-2D15-4144-9DF8-62038B2CAEB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseApp.Core", "BaseApp.Core\BaseApp.Core.csproj", "{8662FB56-1E7D-443D-A92B-C185B3D59FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseApp.Model", "BaseApp.Model\BaseApp.Model.csproj", "{37D87BE8-5079-4626-84FD-8F7EAE1B00DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,14 @@ Global
 		{661452CB-2D15-4144-9DF8-62038B2CAEB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{661452CB-2D15-4144-9DF8-62038B2CAEB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{661452CB-2D15-4144-9DF8-62038B2CAEB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8662FB56-1E7D-443D-A92B-C185B3D59FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8662FB56-1E7D-443D-A92B-C185B3D59FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8662FB56-1E7D-443D-A92B-C185B3D59FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8662FB56-1E7D-443D-A92B-C185B3D59FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D87BE8-5079-4626-84FD-8F7EAE1B00DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D87BE8-5079-4626-84FD-8F7EAE1B00DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D87BE8-5079-4626-84FD-8F7EAE1B00DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D87BE8-5079-4626-84FD-8F7EAE1B00DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

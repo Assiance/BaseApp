@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using BaseApp.DAL.Contexts;
-using BaseApp.Domain.Models;
+using BaseApp.Domain.Managers.Interfaces;
+using BaseApp.Domain.Models.Domain;
+using BaseApp.Domain.Services.Interfaces;
 using BaseApp.Web.Infrastructure.Alerts;
 using BaseApp.Web.Infrastructure.Controllers;
 using BaseApp.Web.Infrastructure.Filters;
@@ -12,12 +13,17 @@ namespace BaseApp.Web.Controllers
 {
     public class ExampleController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IExampleService _exampleService;
+
+        public ExampleController(IExampleService exampleService)
+        {
+            _exampleService = exampleService;
+        }
 
         // GET: Examples
         public ActionResult Index()
         {
-            return View(db.Examples.ToList());
+            return View(_exampleService.Examples.ToList());
         }
 
         // GET: Examples/Details/5
@@ -29,8 +35,8 @@ namespace BaseApp.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Example example = db.Examples.Find(id);
-            
+            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+
             if (example == null)
             {
                 return HttpNotFound();
@@ -55,8 +61,7 @@ namespace BaseApp.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Examples.Add(example);
-                db.SaveChanges();
+                _exampleService.CreateExample(example);
 
                 //this.RedirectToAction<HomeController>(a => a.Index()); would redirect to HomeController Index
                 return RedirectToAction<ExampleController>(c => c.Index()).WithSuccess("Example Created");
@@ -73,8 +78,8 @@ namespace BaseApp.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Example example = db.Examples.Find(id);
-            
+            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+
             if (example == null)
             {
                 return HttpNotFound().WithError("Example not found");
@@ -92,8 +97,8 @@ namespace BaseApp.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(example).State = EntityState.Modified;
-                db.SaveChanges();
+                _exampleService.UpdateExample(example);
+
                 return RedirectToAction<ExampleController>(c => c.Index()).WithSuccess("Example Edited");
             }
             
@@ -107,9 +112,9 @@ namespace BaseApp.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
-            Example example = db.Examples.Find(id);
-            
+
+            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+
             if (example == null)
             {
                 return HttpNotFound().WithError("Example not found");
@@ -124,21 +129,11 @@ namespace BaseApp.Web.Controllers
         [Log("Deleted example {id}")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Example example = db.Examples.Find(id);
-            db.Examples.Remove(example);
-            db.SaveChanges();
-            
-            return RedirectToAction<ExampleController>(a => a.Index()).WithSuccess("Example deleted");
-        }
+            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            
-            base.Dispose(disposing);
+            _exampleService.DeleteExample(example);
+
+            return RedirectToAction<ExampleController>(a => a.Index()).WithSuccess("Example deleted");
         }
     }
 }

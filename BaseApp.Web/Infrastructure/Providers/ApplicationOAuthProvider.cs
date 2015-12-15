@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using BaseApp.Domain.Models.User;
+using BaseApp.Data.Models.User;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -28,7 +28,7 @@ namespace BaseApp.Web.Infrastructure.Providers
         {
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
-            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
+            ApplicationUserEntity user = await userManager.FindAsync(context.UserName, context.Password);
 
             if (user == null)
             {

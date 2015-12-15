@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using BaseApp.DAL.Contexts;
-using BaseApp.Domain.Models;
+using BaseApp.Data.Contexts;
+using BaseApp.Data.Models;
+using BaseApp.Domain;
+using BaseApp.Domain.Services.Interfaces;
 
 namespace BaseApp.Web.Infrastructure.Filters
 {
@@ -34,7 +36,7 @@ namespace BaseApp.Web.Infrastructure.Filters
                 description = description.Replace("{" + keyValuePair.Key + "}", keyValuePair.Value.ToString());
             }
 
-            Context.Logs.Add(new LogAction(CurrentUser.User, filterContext.ActionDescriptor.ActionName,
+            Context.Logs.Add(new LogActionEntity(CurrentUser.User, filterContext.ActionDescriptor.ActionName,
                 filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, description));
 
             Context.SaveChanges();

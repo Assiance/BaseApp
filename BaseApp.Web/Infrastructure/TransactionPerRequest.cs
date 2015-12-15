@@ -1,7 +1,8 @@
 ﻿using System.Data;
 using System.Data.Entity;
 using System.Web;
-using BaseApp.DAL.Contexts;
+using BaseApp.Core.Tasks;
+using BaseApp.Data.Contexts;
 using BaseApp.Web.Infrastructure.Tasks;
 
 namespace BaseApp.Web.Infrastructure

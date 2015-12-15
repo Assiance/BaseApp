@@ -25,6 +25,7 @@
     <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
     <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,8 +49,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -146,16 +147,17 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -192,7 +194,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
@@ -210,6 +211,7 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -221,14 +223,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\SeedData.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Infrastructure\ActionResults\StandardJsonResult.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\SeedData.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -266,6 +268,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Infrastructure\Alerts\Alert.cs" />
+    <Compile Include="Infrastructure\Alerts\AlertDecoratorResult.cs" />
+    <Compile Include="Infrastructure\Alerts\AlertExtensions.cs" />
     <Compile Include="Infrastructure\Filters\ExampleSelectListPopulatorAttribute.cs" />
     <Compile Include="Infrastructure\Filters\LogAttribute.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -273,39 +278,26 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Helpers\JavascriptHelper.cs" />
-    <Compile Include="Infrastructure\StructureMap\Registries\ActionFilterRegistry.cs" />
-    <Compile Include="Infrastructure\Alerts\Alert.cs" />
-    <Compile Include="Infrastructure\Alerts\AlertDecoratorResult.cs" />
-    <Compile Include="Infrastructure\Alerts\AlertExtensions.cs" />
     <Compile Include="Infrastructure\AngularRouteHandler.cs" />
     <Compile Include="Infrastructure\EverfluxViewEngine.cs" />
-    <Compile Include="Infrastructure\StructureMap\ControllerConvention.cs" />
-    <Compile Include="Infrastructure\StructureMap\Registries\ControllerRegistry.cs" />
     <Compile Include="Infrastructure\Controllers\BaseController.cs" />
-    <Compile Include="Infrastructure\CurrentUser.cs" />
-    <Compile Include="Infrastructure\ICurrentUser.cs" />
-    <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />
-    <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
-    <Compile Include="Infrastructure\StructureMap\IoC.cs" />
-    <Compile Include="Infrastructure\StructureMap\Registries\MvcRegistry.cs" />
     <Compile Include="Infrastructure\Security\EnforceHttpsHandler.cs" />
     <Compile Include="Infrastructure\Security\RequireSecureConnectionFilter.cs" />
+    <Compile Include="Infrastructure\StructureMap\ControllerConvention.cs" />
+    <Compile Include="Infrastructure\StructureMap\IoC.cs" />
+    <Compile Include="Infrastructure\StructureMap\Registries\ActionFilterRegistry.cs" />
+    <Compile Include="Infrastructure\StructureMap\Registries\ControllerRegistry.cs" />
+    <Compile Include="Infrastructure\StructureMap\Registries\MvcRegistry.cs" />
     <Compile Include="Infrastructure\StructureMap\Registries\StandardRegistry.cs" />
     <Compile Include="Infrastructure\StructureMap\StructureMapDependencyResolver.cs" />
     <Compile Include="Infrastructure\StructureMap\StructureMapFilterProvider.cs" />
-    <Compile Include="Infrastructure\Tasks\IRunAfterEachRequest.cs" />
-    <Compile Include="Infrastructure\Tasks\IRunAtInit.cs" />
-    <Compile Include="Infrastructure\Tasks\IRunAtStartup.cs" />
-    <Compile Include="Infrastructure\Tasks\IRunOnEachRequest.cs" />
-    <Compile Include="Infrastructure\Tasks\IRunOnError.cs" />
-    <Compile Include="Infrastructure\Tasks\TaskRegistry.cs" />
     <Compile Include="Infrastructure\TransactionPerRequest.cs" />
     <Compile Include="Infrastructure\Providers\ScriptBundlePathProvider.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\UserLoginInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Infrastructure\ActionResults\ChallengeResult.cs" />
-    <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginViewModel.cs" />
     <Compile Include="ViewModels\Account\ManageInfoViewModel.cs" />
     <Compile Include="ViewModels\Account\UserInfoViewModel.cs" />
@@ -392,8 +384,6 @@
     <Content Include="Scripts\angularjs\angular-touch.min.js" />
     <Content Include="Scripts\angularjs\angular.js" />
     <Content Include="Scripts\angularjs\angular.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angularjs\angular-touch.min.js.map" />
     <Content Include="Scripts\angularjs\angular-sanitize.min.js.map" />
     <Content Include="Scripts\angularjs\angular-route.min.js.map" />
@@ -405,14 +395,16 @@
     <Content Include="Scripts\angularjs\angular-aria.min.js.map" />
     <Content Include="Scripts\angularjs\angular-animate.min.js.map" />
     <Content Include="Scripts\angularjs\angular.min.js.map" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <Content Include="app\Web.config" />
+    <Content Include="app\AngularExample\Index.cshtml" />
+    <Content Include="app\_ViewStart.cshtml" />
+    <Content Include="app\dashboard\Index.cshtml" />
+    <Content Include="app\layout\Index.cshtml" />
+    <Content Include="app\login\Index.cshtml" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
@@ -423,12 +415,14 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="app\AngularExample\Index.cshtml" />
-    <Content Include="app\_ViewStart.cshtml" />
-    <Content Include="app\dashboard\Index.cshtml" />
-    <Content Include="app\layout\Index.cshtml" />
-    <Content Include="app\login\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\angularjs\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\angularjs\i18n\angular-locale_aa-er.js" />
@@ -1969,17 +1963,26 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BaseApp.DAL\BaseApp.DAL.csproj">
+    <ProjectReference Include="..\BaseApp.Core\BaseApp.Core.csproj">
+      <Project>{8662fb56-1e7d-443d-a92b-c185b3d59fad}</Project>
+      <Name>BaseApp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BaseApp.Data\BaseApp.Data.csproj">
       <Project>{661452cb-2d15-4144-9df8-62038b2caeb4}</Project>
-      <Name>BaseApp.DAL</Name>
+      <Name>BaseApp.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\BaseApp.Domain\BaseApp.Domain.csproj">
       <Project>{475d2730-6593-46f2-9cf3-77737780a91a}</Project>
       <Name>BaseApp.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BaseApp.Model\BaseApp.Model.csproj">
+      <Project>{37d87be8-5079-4626-84fd-8f7eae1b00dd}</Project>
+      <Name>BaseApp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.config.ts" />
+    <TypeScriptCompile Include="app\app.constants.ts" />
     <TypeScriptCompile Include="app\app.core.module.ts" />
     <TypeScriptCompile Include="app\app.domain.module.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
@@ -2004,6 +2007,7 @@
     <TypeScriptCompile Include="app\login\login.routes.ts" />
     <TypeScriptCompile Include="app\services\context.service.ts" />
     <TypeScriptCompile Include="app\services\currentUser.service.ts" />
+    <TypeScriptCompile Include="app\services\userAccount.service.ts" />
     <TypeScriptCompile Include="app\users\user.model.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\services\siteSettings.service.ts" />

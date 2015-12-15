@@ -16,3 +16,4 @@
         'app.example'
     ]);
 })();
+//# sourceMappingURL=app.module.js.map

@@ -8,24 +8,58 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="container body-content" ng-controller="loginController as vm">
-        <h2>Login Page</h2>
-{{vm.title}}
-        <section>
-            <form action="/token">
-                <div>
-                    <label for="username">Username: </label>
-                    <input id="username" />
-                </div>
-                <div>
-                    <label for="password">Password: </label>
-                    <input id="password" />
-                </div>
+<div class="container body-content" ng-controller="loginController as vm">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Login</h2>
+            <section>
+                <form>
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username: </label>
+                        <div>
+                            <input class="form-control" id="username" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username: </label>
+                        <div>
+                            <input class="form-control" id="username" />
+                        </div>
+                    </div>
 
-                <input type="submit" />
-            </form>
-        </section>
+                    <button class="btn btn-primary">Login</button>
+                </form>
+            </section>
+        </div>
+        <div class="col-md-6">
+            <h2>Register</h2>
+            <section>
+                <form>
+                    <div class="form-group">
+                        <label class="control-label" for="email">Email: </label>
+                        <div>
+                            <input type="email" class="form-control" id="email" ng-model="vm.registerEmail" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password: </label>
+                        <div>
+                            <input type="password" class="form-control" id="password" ng-model="vm.registerPassword"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="confirmPassword">Confirm Password: </label>
+                        <div>
+                            <input type="password" class="form-control" id="confirmPassword" ng-model="vm.registerConfirmPassword"/>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" ng-click="vm.registerUser()">Register</button>
+                </form>
+            </section>
+        </div>
     </div>
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

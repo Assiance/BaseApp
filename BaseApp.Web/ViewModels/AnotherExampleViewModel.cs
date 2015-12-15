@@ -1,8 +1,7 @@
 ﻿using System.Web.Mvc;
 using AutoMapper;
-
-using BaseApp.Domain.Models;
-using BaseApp.Web.Infrastructure.Mapping;
+using BaseApp.Core.Mapping;
+using BaseApp.Domain.Models.Domain;
 
 namespace BaseApp.Web.ViewModels
 {

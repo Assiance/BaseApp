@@ -19,3 +19,4 @@ var app;
             .controller('siteSettingsController', SiteSettingsController);
     })(sitesettings = app.sitesettings || (app.sitesettings = {}));
 })(app || (app = {}));
+//# sourceMappingURL=siteSettings.controller.js.map

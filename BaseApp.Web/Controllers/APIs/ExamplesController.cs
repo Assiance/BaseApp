@@ -1,39 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using BaseApp.DAL.Contexts;
-using BaseApp.Domain.Models;
+using AutoMapper;
+using BaseApp.Domain.Models.Domain;
+using BaseApp.Domain.Services.Interfaces;
+using BaseApp.Model.Models.API;
 
 namespace BaseApp.Web.Controllers.APIs
 {
     public class ExamplesController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IExampleService _exampleService;
+
+        public ExamplesController(IExampleService exampleService)
+        {
+            _exampleService = exampleService;
+        }
 
         // GET: api/Examples
-        public IQueryable<Example> GetExamples()
+        public IQueryable<ExampleApi> GetExamples()
         {
-            return db.Examples;
+            return Mapper.Map<IQueryable<ExampleApi>>(_exampleService.Examples);
         }
 
         // GET: api/Examples/5
-        [ResponseType(typeof(Example))]
+        [ResponseType(typeof(ExampleApi))]
         public IHttpActionResult GetExample(int id)
         {
-            Example example = db.Examples.Find(id);
+            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
             if (example == null)
             {
                 return NotFound();
             }
 
-            return Ok(example);
+            var apiExample = Mapper.Map<ExampleApi>(example);
+
+            return Ok(apiExample);
         }
 
         // PUT: api/Examples/5
@@ -50,11 +54,9 @@ namespace BaseApp.Web.Controllers.APIs
                 return BadRequest();
             }
 
-            db.Entry(example).State = EntityState.Modified;
-
             try
             {
-                db.SaveChanges();
+                _exampleService.UpdateExample(example);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +74,7 @@ namespace BaseApp.Web.Controllers.APIs
         }
 
         // POST: api/Examples
-        [ResponseType(typeof(Example))]
+        [ResponseType(typeof(ExampleApi))]
         public IHttpActionResult PostExample(Example example)
         {
             if (!ModelState.IsValid)
@@ -80,40 +82,31 @@ namespace BaseApp.Web.Controllers.APIs
                 return BadRequest(ModelState);
             }
 
-            db.Examples.Add(example);
-            db.SaveChanges();
+            example = _exampleService.CreateExample(example);
 
-            return CreatedAtRoute("DefaultApi", new { id = example.Id }, example);
+            var apiExample = Mapper.Map<ExampleApi>(example);
+
+            return CreatedAtRoute("DefaultApi", new { id = example.Id }, apiExample);
         }
 
         // DELETE: api/Examples/5
-        [ResponseType(typeof(Example))]
+        [ResponseType(typeof(ExampleApi))]
         public IHttpActionResult DeleteExample(int id)
         {
-            Example example = db.Examples.Find(id);
+            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
             if (example == null)
             {
                 return NotFound();
             }
 
-            db.Examples.Remove(example);
-            db.SaveChanges();
+            _exampleService.DeleteExample(example);
 
             return Ok(example);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         private bool ExampleExists(int id)
         {
-            return db.Examples.Count(e => e.Id == id) > 0;
+            return _exampleService.Examples.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -4,15 +4,21 @@ var app;
     (function (login) {
         'use strict';
         var LoginController = (function () {
-            function LoginController(title, appSettings) {
-                this.title = title;
+            function LoginController(appSettings, userAccountService, registerEmail, registerPassword, registerConfirmPassword) {
+                this.appSettings = appSettings;
+                this.userAccountService = userAccountService;
+                this.registerEmail = registerEmail;
+                this.registerPassword = registerPassword;
+                this.registerConfirmPassword = registerConfirmPassword;
                 var vm = this;
-                vm.title = 'login';
-                vm.activate();
             }
-            LoginController.prototype.activate = function () {
+            LoginController.prototype.registerUser = function () {
+                var registerer = new app.services.UserAccount(this.registerEmail, this.registerPassword, this.registerConfirmPassword);
+                this.userAccountService.registration.registerUser(registerer);
             };
-            LoginController.$inject = ['appSettings'];
+            LoginController.$inject = [
+                'appSettings',
+                'userAccountService'];
             return LoginController;
         })();
         angular
@@ -20,3 +26,4 @@ var app;
             .controller('loginController', LoginController);
     })(login = app.login || (app.login = {}));
 })(app || (app = {}));
+//# sourceMappingURL=login.controller.js.map

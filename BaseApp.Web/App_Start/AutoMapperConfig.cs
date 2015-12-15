@@ -4,8 +4,8 @@ using System.Linq;
 using System.Reflection;
 
 using AutoMapper;
-
-using BaseApp.Web.Infrastructure.Mapping;
+using BaseApp.Core.Mapping;
+using BaseApp.Core.Tasks;
 using BaseApp.Web.Infrastructure.Tasks;
 
 namespace BaseApp.Web

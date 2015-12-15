@@ -21,3 +21,4 @@ var app;
             .factory('contextService', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=context.service.js.map

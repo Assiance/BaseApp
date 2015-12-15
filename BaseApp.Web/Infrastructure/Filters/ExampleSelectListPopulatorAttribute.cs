@@ -1,13 +1,18 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using BaseApp.DAL.Contexts;
+using BaseApp.Domain.Services.Interfaces;
 
 namespace BaseApp.Web.Infrastructure.Filters
 {
     //Use EditorFor Template INSTEAD PluralSight Application Frameworks (Honeycutt) Demo: Editor Templates
     public class ExampleSelectListPopulatorAttribute : ActionFilterAttribute
     {
-        public ApplicationDbContext Context { get; set; }
+        public IExampleService _exampleService { get; set; }
+
+        public ExampleSelectListPopulatorAttribute(IExampleService exampleService)
+        {
+            _exampleService = exampleService;
+        }
 
         //IF EXAMPLE WAS AN ENUM (Would be better to add enums to an editorFor template int the view)
         //private SelectListItem[] GetAvailableExamples1()
@@ -20,7 +25,7 @@ namespace BaseApp.Web.Infrastructure.Filters
 
         private SelectListItem[] GetAvailableExamples()
         {
-            return Context.Examples.Select(x => new SelectListItem()
+            return _exampleService.Examples.Select(x => new SelectListItem()
                                                     {
                                                         Text = x.FirstName,
                                                         Value = x.Id.ToString()

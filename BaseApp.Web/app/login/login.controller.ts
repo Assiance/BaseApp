@@ -2,22 +2,29 @@ module app.login {
     'use strict';
 
     interface ILoginViewModel {
-        title: string;
-        activate: () => void;
+        registerEmail: string;
+        registerPassword: string;
+        registerConfirmPassword: string;
+
+        registerUser: () => void;
     }
 
     class LoginController implements ILoginViewModel {
+        static $inject: string[] = [
+            'appSettings',
+            'userAccountService'];
+        constructor(public appSettings: constants.IAppSettings, public userAccountService: services.IUserAccountService,
+            public registerEmail: string,
+            public registerPassword: string,
+            public registerConfirmPassword: string) {
 
-        static $inject: string[] = ['appSettings'];
-        constructor(public title: string, appSettings: app.constants.IAppSettings) {
             var vm = this;
-
-            vm.title = 'login';
-            vm.activate();
         }
 
-        activate(): void {
+        registerUser(): void {
+            var registerer = new services.UserAccount(this.registerEmail, this.registerPassword, this.registerConfirmPassword);
 
+            this.userAccountService.registration.registerUser(registerer);
         }
     }
 

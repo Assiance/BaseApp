@@ -1,6 +1,5 @@
 ﻿using System;
-
-using BaseApp.DAL.Contexts;
+using BaseApp.Data.Contexts;
 using BaseApp.Web.Infrastructure.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
