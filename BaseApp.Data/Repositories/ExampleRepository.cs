@@ -7,7 +7,7 @@ using AutoMapper;
 using BaseApp.Data.Contexts;
 using BaseApp.Data.Models;
 using BaseApp.Data.Repositories.Interfaces;
-using BaseApp.Domain.Models.Domain;
+using BaseApp.Model.Models.Domain;
 
 namespace BaseApp.Data.Repositories
 {
@@ -15,7 +15,18 @@ namespace BaseApp.Data.Repositories
     {
         private readonly IDataContext _dataContext;
 
-        public IQueryable<Example> Examples => Mapper.Map<IQueryable<Example>>(_dataContext.GetQueryable<ExampleEntity>());
+        public IQueryable<Example> Examples
+        {
+            get
+            {
+                return _dataContext.GetQueryable<ExampleEntity>().Select(x => new Example()
+                {
+                    Id = x.Id,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName
+                });
+            }
+        }
 
         public ExampleRepository(IDataContext dataContext)
         {

@@ -7,6 +7,7 @@ using BaseApp.Web.Infrastructure.Controllers;
 
 namespace BaseApp.Web.Controllers
 {
+    //Default Controller
     public class LayoutController : BaseController
     {
         // GET: Layout

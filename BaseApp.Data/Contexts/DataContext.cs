@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -58,6 +60,11 @@ namespace BaseApp.Data.Contexts
             {
                 CommitChanges();
             }
+        }
+
+        public DbContextTransaction BeginTransaction(IsolationLevel isolationLevel)
+        {
+            return _dbContext.Database.BeginTransaction(isolationLevel);
         }
 
         public void Dispose()

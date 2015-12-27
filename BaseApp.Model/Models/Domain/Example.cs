@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BaseApp.Core.Mapping;
+using BaseApp.Model.Models.API;
 
-namespace BaseApp.Domain.Models.Domain
+namespace BaseApp.Model.Models.Domain
 {
-    public class Example
+    public class Example : IMapFrom<ExampleApi>
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

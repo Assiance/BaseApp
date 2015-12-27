@@ -1,36 +1,34 @@
-﻿using System.Linq;
-using BaseApp.Domain.Services.Interfaces;
-using BaseApp.Model.Models.Domain;
-using BaseApp.Web.Infrastructure.Tasks;
-using Microsoft.AspNet.Identity;
+﻿//using BaseApp.Domain.Managers.Interfaces;
+//using BaseApp.Web.Infrastructure.Tasks;
 
-namespace BaseApp.Data
-{
-    public class SeedData : IRunAtStartup
-    {
-        private readonly IUserService _userService;
+//namespace BaseApp.Web
+//{
+//    public class SeedData : IRunAtStartup
+//    {
+//        private readonly IMemberManager _memberManager;
 
-        public SeedData(IUserService userService)
-        {
-            //Todo: Recode this to use the repositories
-            //Todo: Create SeedData for other Context
-            _userService = userService;
-        }
+//        public SeedData(IMemberManager memberManager)
+//        {
+//            //Todo: Recode this to use the repositories
+//            //Todo: Create SeedData for other Context
+//            _memberManager = memberManager;
+//        }
 
-        public void Execute()
-        {
-            var passwordHash = new PasswordHasher();
-            string password = passwordHash.HashPassword("test");
-            if (!_userService.Users.Any())
-            {
-                _userService.CreateUser(new User()
-                {
-                    UserName = "TestUser",
-                    Email = "Foo@Test.com",
-                    EmailConfirmed = true,
-                    PasswordHash = password
-                });
-            }
-        }
-    }
-}
+//        //CREATE SEED-MANAGER
+//        public void Execute()
+//        {
+//            //var passwordHash = new PasswordHasher();
+//            //string password = passwordHash.HashPassword("test");
+//            //if (!_memberManager.Users.Any())
+//            //{
+//            //    _memberManager.CreateUser(new User()
+//            //    {
+//            //        UserName = "TestUser",
+//            //        Email = "Foo@Test.com",
+//            //        EmailConfirmed = true,
+//            //        PasswordHash = password
+//            //    });
+//            //}
+//        }
+//    }
+//}

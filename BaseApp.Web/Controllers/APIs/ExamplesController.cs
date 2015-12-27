@@ -1,35 +1,38 @@
 ﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
-using BaseApp.Domain.Models.Domain;
+using AutoMapper.QueryableExtensions;
+using BaseApp.Domain.Managers.Interfaces;
 using BaseApp.Domain.Services.Interfaces;
 using BaseApp.Model.Models.API;
+using BaseApp.Model.Models.Domain;
 
 namespace BaseApp.Web.Controllers.APIs
 {
     public class ExamplesController : ApiController
     {
-        private readonly IExampleService _exampleService;
+        private readonly IExampleManager _exampleManager;
 
-        public ExamplesController(IExampleService exampleService)
+        public ExamplesController(IExampleManager exampleManager)
         {
-            _exampleService = exampleService;
+            _exampleManager = exampleManager;
         }
 
         // GET: api/Examples
         public IQueryable<ExampleApi> GetExamples()
         {
-            return Mapper.Map<IQueryable<ExampleApi>>(_exampleService.Examples);
+            return _exampleManager.Examples.ProjectTo<ExampleApi>();
         }
 
         // GET: api/Examples/5
         [ResponseType(typeof(ExampleApi))]
         public IHttpActionResult GetExample(int id)
         {
-            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+            Example example = _exampleManager.Examples.FirstOrDefault(x => x.Id == id);
             if (example == null)
             {
                 return NotFound();
@@ -56,7 +59,7 @@ namespace BaseApp.Web.Controllers.APIs
 
             try
             {
-                _exampleService.UpdateExample(example);
+                _exampleManager.UpdateExample(example);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -82,7 +85,7 @@ namespace BaseApp.Web.Controllers.APIs
                 return BadRequest(ModelState);
             }
 
-            example = _exampleService.CreateExample(example);
+            example = _exampleManager.CreateExample(example);
 
             var apiExample = Mapper.Map<ExampleApi>(example);
 
@@ -93,20 +96,20 @@ namespace BaseApp.Web.Controllers.APIs
         [ResponseType(typeof(ExampleApi))]
         public IHttpActionResult DeleteExample(int id)
         {
-            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+            Example example = _exampleManager.Examples.FirstOrDefault(x => x.Id == id);
             if (example == null)
             {
                 return NotFound();
             }
 
-            _exampleService.DeleteExample(example);
+            _exampleManager.DeleteExample(example);
 
             return Ok(example);
         }
 
         private bool ExampleExists(int id)
         {
-            return _exampleService.Examples.Count(e => e.Id == id) > 0;
+            return _exampleManager.Examples.Count(e => e.Id == id) > 0;
         }
     }
 }

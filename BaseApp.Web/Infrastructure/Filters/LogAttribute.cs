@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using BaseApp.Data.Contexts;
-using BaseApp.Data.Models;
 using BaseApp.Domain;
+using BaseApp.Domain.Managers.Interfaces;
 using BaseApp.Domain.Services.Interfaces;
+using BaseApp.Model.Models.Domain;
+using BaseApp.Web.Infrastructure.Services.Interfaces;
 
 namespace BaseApp.Web.Infrastructure.Filters
 {
@@ -11,8 +12,9 @@ namespace BaseApp.Web.Infrastructure.Filters
     {
         private IDictionary<string, object> _parameters;
 
-        public ApplicationDbContext Context { get; set; }
-        public ICurrentUser CurrentUser { get; set; }
+        public ILogManager LogManager { get; set; }
+        public ICurrentUserService CurrentUserService { get; set; }
+        public IMemberManager MemberManager { get; set; }
         public string Description { get; set; }
 
         public LogAttribute(string description)
@@ -36,10 +38,10 @@ namespace BaseApp.Web.Infrastructure.Filters
                 description = description.Replace("{" + keyValuePair.Key + "}", keyValuePair.Value.ToString());
             }
 
-            Context.Logs.Add(new LogActionEntity(CurrentUser.User, filterContext.ActionDescriptor.ActionName,
-                filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, description));
+            var logAction = new LogAction(CurrentUserService.GetCurrentUser(), filterContext.ActionDescriptor.ActionName, 
+                filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, description);
 
-            Context.SaveChanges();
+            LogManager.LogControllerAction(logAction);
         }
     }
 }

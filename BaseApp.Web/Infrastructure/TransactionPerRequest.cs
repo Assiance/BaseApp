@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Web;
 using BaseApp.Core.Tasks;
-using BaseApp.Data.Contexts;
+using BaseApp.Domain.Services.Interfaces;
 using BaseApp.Web.Infrastructure.Tasks;
 
 namespace BaseApp.Web.Infrastructure
@@ -12,20 +12,20 @@ namespace BaseApp.Web.Infrastructure
         public static string TransactionKey { get { return "_Transaction"; } }
         public static string ErrorKey { get { return "_Error"; } }
 
-        private readonly ApplicationDbContext _context;
+        private readonly IApplicationDbService _applicationDbService;
         private readonly HttpContextBase _httpContext;
 
-        public TransactionPerRequest(ApplicationDbContext context,
+        public TransactionPerRequest(IApplicationDbService applicationDbService,
             HttpContextBase httpContext)
         {
             //Todo: Add all Contexts to this file
-            this._context = context;
+            this._applicationDbService = applicationDbService;
             this._httpContext = httpContext;
         }
 
         void IRunOnEachRequest.Execute()
         {
-            _httpContext.Items[TransactionKey] = _context.Database.BeginTransaction(IsolationLevel.ReadCommitted);
+            _httpContext.Items[TransactionKey] = _applicationDbService.BeginTransaction(IsolationLevel.ReadCommitted);
         }
 
         void IRunOnError.Execute()

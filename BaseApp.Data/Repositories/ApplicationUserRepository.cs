@@ -1,42 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using BaseApp.Data.Contexts;
-using BaseApp.Data.Models;
 using BaseApp.Data.Models.User;
-using BaseApp.Data.Repositories.Interfaces;
-using BaseApp.Domain.Models.Domain;
-using BaseApp.Model.Models.Domain;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace BaseApp.Data.Repositories
 {
-    public class ApplicationUserRepository : IApplicationUserRepository
+    public class ApplicationUserRepository : UserManager<ApplicationUserEntity>
     {
-        private readonly IDataContext _dataContext;
-
-        public IQueryable<User> Users => Mapper.Map<IQueryable<User>>(_dataContext.GetQueryable<ApplicationUserEntity>());
-
-        public ApplicationUserRepository(IDataContext dataContext)
+        public ApplicationUserRepository(IUserStore<ApplicationUserEntity> store, IdentityFactoryOptions<ApplicationUserRepository> options)
+            : base(store)
         {
-            _dataContext = dataContext;
-        }
+            UserValidator = new UserValidator<ApplicationUserEntity>(this)
+            {
+                AllowOnlyAlphanumericUserNames = false,
+                RequireUniqueEmail = true
+            };
 
-        public User CreateUser(User user)
-        {
-            throw new NotImplementedException();
-        }
+            PasswordValidator = new PasswordValidator()
+            {
+                RequiredLength = 6,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
+            };
 
-        public void UpdateUser(User user)
-        {
-            throw new NotImplementedException();
-        }
+            // Configure user lockout defaults
+            UserLockoutEnabledByDefault = true;
+            DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            MaxFailedAccessAttemptsBeforeLockout = 5;
 
-        public void DeleteUser(User user)
-        {
-            throw new NotImplementedException();
+            UserTokenProvider = new DataProtectorTokenProvider<ApplicationUserEntity>(options.DataProtectionProvider.Create("ASP.NET Identity"))
+            {
+                // Tokens, like forgot password, are valid for this amount of time
+                TokenLifespan = TimeSpan.FromHours(3)
+            };
         }
     }
 }

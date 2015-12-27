@@ -1,9 +1,11 @@
 ﻿using System.Web;
 using System.Web.Http;
+using System.Web.Http.Dispatcher;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using BaseApp.Core.Tasks;
+using BaseApp.Core.Tasks.Registries;
 using BaseApp.Web.Areas.HelpPage.Controllers;
 using BaseApp.Web.Infrastructure;
 using BaseApp.Web.Infrastructure.StructureMap;
@@ -42,9 +44,13 @@ namespace BaseApp.Web
 
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(() => this.Container ?? IoC.Container));
 
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator),
+                    new StructureMapHttpControllerActivator(IoC.Container));
+
             IoC.Container.Configure(cfg =>
             {
                 cfg.AddRegistry(new StandardRegistry());
+                cfg.AddRegistry(new WebRegistry());
                 cfg.AddRegistry(new ControllerRegistry());
                 cfg.AddRegistry(new ActionFilterRegistry(() => this.Container ?? IoC.Container));
                 cfg.AddRegistry(new MvcRegistry());

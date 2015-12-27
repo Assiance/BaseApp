@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 
 namespace BaseApp.Data.Contexts
@@ -6,6 +8,8 @@ namespace BaseApp.Data.Contexts
     public interface IDataContext : IDisposable
     {
         void CommitChanges();
+
+        DbContextTransaction BeginTransaction(IsolationLevel isolationLevel);
 
         IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
 

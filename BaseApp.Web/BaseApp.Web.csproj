@@ -224,12 +224,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\SeedData.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Infrastructure\ActionResults\StandardJsonResult.cs" />
-    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -271,24 +268,25 @@
     <Compile Include="Infrastructure\Alerts\Alert.cs" />
     <Compile Include="Infrastructure\Alerts\AlertDecoratorResult.cs" />
     <Compile Include="Infrastructure\Alerts\AlertExtensions.cs" />
-    <Compile Include="Infrastructure\Filters\ExampleSelectListPopulatorAttribute.cs" />
     <Compile Include="Infrastructure\Filters\LogAttribute.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Helpers\JavascriptHelper.cs" />
-    <Compile Include="Infrastructure\AngularRouteHandler.cs" />
     <Compile Include="Infrastructure\EverfluxViewEngine.cs" />
     <Compile Include="Infrastructure\Controllers\BaseController.cs" />
     <Compile Include="Infrastructure\Security\EnforceHttpsHandler.cs" />
     <Compile Include="Infrastructure\Security\RequireSecureConnectionFilter.cs" />
+    <Compile Include="Infrastructure\Services\CurrentUserService.cs" />
+    <Compile Include="Infrastructure\Services\Interfaces\ICurrentUserService.cs" />
     <Compile Include="Infrastructure\StructureMap\ControllerConvention.cs" />
     <Compile Include="Infrastructure\StructureMap\IoC.cs" />
     <Compile Include="Infrastructure\StructureMap\Registries\ActionFilterRegistry.cs" />
     <Compile Include="Infrastructure\StructureMap\Registries\ControllerRegistry.cs" />
     <Compile Include="Infrastructure\StructureMap\Registries\MvcRegistry.cs" />
+    <Compile Include="Infrastructure\StructureMap\Registries\StructureMapHttpControllerActivator.cs" />
     <Compile Include="Infrastructure\StructureMap\Registries\StandardRegistry.cs" />
+    <Compile Include="Infrastructure\StructureMap\Registries\WebRegistry.cs" />
     <Compile Include="Infrastructure\StructureMap\StructureMapDependencyResolver.cs" />
     <Compile Include="Infrastructure\StructureMap\StructureMapFilterProvider.cs" />
     <Compile Include="Infrastructure\TransactionPerRequest.cs" />
@@ -296,7 +294,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\UserLoginInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Infrastructure\ActionResults\ChallengeResult.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginViewModel.cs" />
     <Compile Include="ViewModels\Account\ManageInfoViewModel.cs" />
@@ -305,6 +302,12 @@
     <Compile Include="ViewModels\ExampleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\AngularExample\Index.cshtml" />
+    <Content Include="app\dashboard\Index.cshtml" />
+    <Content Include="app\layout\Index.cshtml" />
+    <Content Include="app\login\Index.cshtml" />
+    <Content Include="app\Web.config" />
+    <Content Include="app\_ViewStart.cshtml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -395,12 +398,6 @@
     <Content Include="Scripts\angularjs\angular-aria.min.js.map" />
     <Content Include="Scripts\angularjs\angular-animate.min.js.map" />
     <Content Include="Scripts\angularjs\angular.min.js.map" />
-    <Content Include="app\Web.config" />
-    <Content Include="app\AngularExample\Index.cshtml" />
-    <Content Include="app\_ViewStart.cshtml" />
-    <Content Include="app\dashboard\Index.cshtml" />
-    <Content Include="app\layout\Index.cshtml" />
-    <Content Include="app\login\Index.cshtml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\errors.json" />
@@ -1967,10 +1964,6 @@
       <Project>{8662fb56-1e7d-443d-a92b-c185b3d59fad}</Project>
       <Name>BaseApp.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BaseApp.Data\BaseApp.Data.csproj">
-      <Project>{661452cb-2d15-4144-9df8-62038b2caeb4}</Project>
-      <Name>BaseApp.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BaseApp.Domain\BaseApp.Domain.csproj">
       <Project>{475d2730-6593-46f2-9cf3-77737780a91a}</Project>
       <Name>BaseApp.Domain</Name>
@@ -1981,6 +1974,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\AngularExample\example.controller.ts" />
+    <TypeScriptCompile Include="app\AngularExample\example.model.ts" />
+    <TypeScriptCompile Include="app\AngularExample\example.module.ts" />
+    <TypeScriptCompile Include="app\AngularExample\example.routes.ts" />
     <TypeScriptCompile Include="app\app.config.ts" />
     <TypeScriptCompile Include="app\app.constants.ts" />
     <TypeScriptCompile Include="app\app.core.module.ts" />
@@ -1995,25 +1992,21 @@
     <TypeScriptCompile Include="app\blocks\logDecorator.config.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.routes.ts" />
-    <TypeScriptCompile Include="app\AngularExample\example.controller.ts" />
-    <TypeScriptCompile Include="app\AngularExample\example.model.ts" />
-    <TypeScriptCompile Include="app\AngularExample\example.module.ts" />
-    <TypeScriptCompile Include="app\AngularExample\example.routes.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\layout\navigation.controller.ts" />
-    <TypeScriptCompile Include="app\login\profile.ts" />
     <TypeScriptCompile Include="app\login\login.controller.ts" />
     <TypeScriptCompile Include="app\login\login.module.ts" />
     <TypeScriptCompile Include="app\login\login.routes.ts" />
+    <TypeScriptCompile Include="app\login\profile.ts" />
     <TypeScriptCompile Include="app\services\context.service.ts" />
     <TypeScriptCompile Include="app\services\currentUser.service.ts" />
-    <TypeScriptCompile Include="app\services\userAccount.service.ts" />
-    <TypeScriptCompile Include="app\users\user.model.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\services\siteSettings.service.ts" />
     <TypeScriptCompile Include="app\services\user.service.ts" />
+    <TypeScriptCompile Include="app\services\userAccount.service.ts" />
     <TypeScriptCompile Include="app\sitesettings\siteSettings.controller.ts" />
     <TypeScriptCompile Include="app\sitesettings\siteSettings.module.ts" />
+    <TypeScriptCompile Include="app\users\user.model.ts" />
     <TypeScriptCompile Include="app\widgets\slugCheck.directive.ts" />
     <TypeScriptCompile Include="app\widgets\widgets.module.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui\angular-ui-router.d.ts" />

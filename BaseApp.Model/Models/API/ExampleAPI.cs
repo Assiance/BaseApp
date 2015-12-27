@@ -1,6 +1,9 @@
-﻿namespace BaseApp.Model.Models.API
+﻿using BaseApp.Core.Mapping;
+using BaseApp.Model.Models.Domain;
+
+namespace BaseApp.Model.Models.API
 {
-    public class ExampleApi
+    public class ExampleApi : IMapFrom<Example>
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

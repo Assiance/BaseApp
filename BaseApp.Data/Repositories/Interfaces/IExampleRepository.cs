@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using BaseApp.Domain.Models.Domain;
+using BaseApp.Model.Models.Domain;
 
 namespace BaseApp.Data.Repositories.Interfaces
 {

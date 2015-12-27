@@ -3,8 +3,8 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using BaseApp.Domain.Managers.Interfaces;
-using BaseApp.Domain.Models.Domain;
 using BaseApp.Domain.Services.Interfaces;
+using BaseApp.Model.Models.Domain;
 using BaseApp.Web.Infrastructure.Alerts;
 using BaseApp.Web.Infrastructure.Controllers;
 using BaseApp.Web.Infrastructure.Filters;
@@ -13,17 +13,17 @@ namespace BaseApp.Web.Controllers
 {
     public class ExampleController : BaseController
     {
-        private readonly IExampleService _exampleService;
+        private readonly IExampleManager _exampleManager;
 
-        public ExampleController(IExampleService exampleService)
+        public ExampleController(IExampleManager exampleManager)
         {
-            _exampleService = exampleService;
+            _exampleManager = exampleManager;
         }
 
         // GET: Examples
         public ActionResult Index()
         {
-            return View(_exampleService.Examples.ToList());
+            return View(_exampleManager.Examples.ToList());
         }
 
         // GET: Examples/Details/5
@@ -35,7 +35,7 @@ namespace BaseApp.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+            Example example = _exampleManager.Examples.FirstOrDefault(x => x.Id == id);
 
             if (example == null)
             {
@@ -61,7 +61,7 @@ namespace BaseApp.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _exampleService.CreateExample(example);
+                _exampleManager.CreateExample(example);
 
                 //this.RedirectToAction<HomeController>(a => a.Index()); would redirect to HomeController Index
                 return RedirectToAction<ExampleController>(c => c.Index()).WithSuccess("Example Created");
@@ -78,7 +78,7 @@ namespace BaseApp.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+            Example example = _exampleManager.Examples.FirstOrDefault(x => x.Id == id);
 
             if (example == null)
             {
@@ -97,7 +97,7 @@ namespace BaseApp.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _exampleService.UpdateExample(example);
+                _exampleManager.UpdateExample(example);
 
                 return RedirectToAction<ExampleController>(c => c.Index()).WithSuccess("Example Edited");
             }
@@ -113,7 +113,7 @@ namespace BaseApp.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+            Example example = _exampleManager.Examples.FirstOrDefault(x => x.Id == id);
 
             if (example == null)
             {
@@ -129,9 +129,9 @@ namespace BaseApp.Web.Controllers
         [Log("Deleted example {id}")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Example example = _exampleService.Examples.FirstOrDefault(x => x.Id == id);
+            Example example = _exampleManager.Examples.FirstOrDefault(x => x.Id == id);
 
-            _exampleService.DeleteExample(example);
+            _exampleManager.DeleteExample(example);
 
             return RedirectToAction<ExampleController>(a => a.Index()).WithSuccess("Example deleted");
         }
