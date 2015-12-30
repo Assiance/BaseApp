@@ -16,11 +16,11 @@ namespace BaseApp.Web
             //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             //).RouteHandler = new AngularRouteHandler();
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Layout", action = "Index", id = UrlParameter.Optional } //Changed default route to layout controller
-            );
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Layout", action = "Index", id = UrlParameter.Optional } //Changed default route to layout controller
+            //);
         }
     }
 }

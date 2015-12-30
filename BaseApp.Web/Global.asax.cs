@@ -35,8 +35,6 @@ namespace BaseApp.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new EverfluxViewEngine());
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -302,12 +302,6 @@
     <Compile Include="ViewModels\ExampleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\AngularExample\Index.cshtml" />
-    <Content Include="app\dashboard\Index.cshtml" />
-    <Content Include="app\layout\Index.cshtml" />
-    <Content Include="app\login\Index.cshtml" />
-    <Content Include="app\Web.config" />
-    <Content Include="app\_ViewStart.cshtml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -1916,8 +1910,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\less-1.5.1.js" />
-    <Content Include="Scripts\less-1.5.1.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -1974,41 +1966,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app\AngularExample\example.controller.ts" />
-    <TypeScriptCompile Include="app\AngularExample\example.model.ts" />
-    <TypeScriptCompile Include="app\AngularExample\example.module.ts" />
-    <TypeScriptCompile Include="app\AngularExample\example.routes.ts" />
-    <TypeScriptCompile Include="app\app.config.ts" />
-    <TypeScriptCompile Include="app\app.constants.ts" />
-    <TypeScriptCompile Include="app\app.core.module.ts" />
-    <TypeScriptCompile Include="app\app.domain.module.ts" />
-    <TypeScriptCompile Include="app\app.module.ts" />
-    <TypeScriptCompile Include="app\app.routes.ts" />
-    <TypeScriptCompile Include="app\app.run.ts" />
-    <TypeScriptCompile Include="app\app.values.ts" />
-    <TypeScriptCompile Include="app\blocks\apiEndpoint.config.ts" />
-    <TypeScriptCompile Include="app\blocks\apiEndpoint.provider.ts" />
-    <TypeScriptCompile Include="app\blocks\blocks.module.ts" />
-    <TypeScriptCompile Include="app\blocks\logDecorator.config.ts" />
-    <TypeScriptCompile Include="app\dashboard\dashboard.module.ts" />
-    <TypeScriptCompile Include="app\dashboard\dashboard.routes.ts" />
-    <TypeScriptCompile Include="app\layout\layout.module.ts" />
-    <TypeScriptCompile Include="app\layout\navigation.controller.ts" />
-    <TypeScriptCompile Include="app\login\login.controller.ts" />
-    <TypeScriptCompile Include="app\login\login.module.ts" />
-    <TypeScriptCompile Include="app\login\login.routes.ts" />
-    <TypeScriptCompile Include="app\login\profile.ts" />
-    <TypeScriptCompile Include="app\services\context.service.ts" />
-    <TypeScriptCompile Include="app\services\currentUser.service.ts" />
-    <TypeScriptCompile Include="app\services\services.module.ts" />
-    <TypeScriptCompile Include="app\services\siteSettings.service.ts" />
-    <TypeScriptCompile Include="app\services\user.service.ts" />
-    <TypeScriptCompile Include="app\services\userAccount.service.ts" />
-    <TypeScriptCompile Include="app\sitesettings\siteSettings.controller.ts" />
-    <TypeScriptCompile Include="app\sitesettings\siteSettings.module.ts" />
-    <TypeScriptCompile Include="app\users\user.model.ts" />
-    <TypeScriptCompile Include="app\widgets\slugCheck.directive.ts" />
-    <TypeScriptCompile Include="app\widgets\widgets.module.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui\angular-ui-sortable.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
