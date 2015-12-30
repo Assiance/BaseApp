@@ -224,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\SeedData.cs" />
+    <Compile Include="Controllers\APIs\CourtsController.cs" />
     <Compile Include="Infrastructure\ActionResults\StandardJsonResult.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

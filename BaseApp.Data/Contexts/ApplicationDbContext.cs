@@ -9,6 +9,7 @@ namespace BaseApp.Data.Contexts
     {
         public DbSet<ExampleEntity> Examples { get; set; }
         public DbSet<LogActionEntity> Logs { get; set; }
+        public DbSet<CourtEntity> Courts { get; set; } 
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
