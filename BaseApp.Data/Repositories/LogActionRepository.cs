@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using BaseApp.Data.Contexts;
-using BaseApp.Data.Models;
-using BaseApp.Data.Models.User;
+using BaseApp.Data.Entities;
 using BaseApp.Data.Repositories.Interfaces;
 using BaseApp.Model.Models.Domain;
 

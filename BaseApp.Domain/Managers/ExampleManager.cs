@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using BaseApp.Data.Contexts;
-using BaseApp.Data.Models;
 using BaseApp.Data.Repositories.Interfaces;
 using BaseApp.Domain.Managers.Interfaces;
 using BaseApp.Model.Models.Domain;

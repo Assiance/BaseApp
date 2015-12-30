@@ -1,11 +1,12 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BaseApp.Core.Mapping;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace BaseApp.Data.Models.User
+namespace BaseApp.Data.Entities.User
 {
-    public class ApplicationUserEntity : IdentityUser
+    public class ApplicationUserEntity : IdentityUser, IMapFrom<Model.Models.Domain.User>, IMapTo<Model.Models.Domain.User>
     {
         // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUserEntity> manager, string authenticationType)

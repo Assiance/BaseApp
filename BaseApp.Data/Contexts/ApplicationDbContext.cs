@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
-using BaseApp.Data.Models;
-using BaseApp.Data.Models.User;
+using BaseApp.Data.Entities;
+using BaseApp.Data.Entities.User;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BaseApp.Data.Contexts

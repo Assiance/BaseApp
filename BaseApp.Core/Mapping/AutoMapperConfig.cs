@@ -26,7 +26,7 @@ namespace BaseApp.Core.Mapping
 
         private static void LoadStandardMappings(IEnumerable<Type> types)
         {
-            var maps = (from t in types
+            var fromMaps = (from t in types
                         from i in t.GetInterfaces()
                         where i.IsGenericType &&
                               i.GetGenericTypeDefinition() == typeof(IMapFrom<>) &&
@@ -38,7 +38,24 @@ namespace BaseApp.Core.Mapping
                             Destination = t
                         }).ToArray();
 
-            foreach (var map in maps)
+            foreach (var map in fromMaps)
+            {
+                Mapper.CreateMap(map.Source, map.Destination);
+            }
+
+            var toMaps = (from t in types
+                            from i in t.GetInterfaces()
+                            where i.IsGenericType &&
+                                  i.GetGenericTypeDefinition() == typeof(IMapTo<>) &&
+                                  !t.IsAbstract &&
+                                  !t.IsInterface
+                            select new
+                            {
+                                Source = t,
+                                Destination = i.GetGenericArguments()[0]
+                            }).ToArray();
+
+            foreach (var map in toMaps)
             {
                 Mapper.CreateMap(map.Source, map.Destination);
             }

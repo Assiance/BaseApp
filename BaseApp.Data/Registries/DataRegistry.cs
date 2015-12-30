@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Cryptography.X509Certificates;
 using BaseApp.Data.Contexts;
-using BaseApp.Data.Models.User;
+using BaseApp.Data.Entities.User;
 using BaseApp.Data.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

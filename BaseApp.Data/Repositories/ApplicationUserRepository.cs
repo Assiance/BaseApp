@@ -1,5 +1,5 @@
 ﻿using System;
-using BaseApp.Data.Models.User;
+using BaseApp.Data.Entities.User;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 

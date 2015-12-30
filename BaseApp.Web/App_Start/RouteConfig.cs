@@ -10,16 +10,11 @@ namespace BaseApp.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //    name: "Angular",
-            //    url: "Angular/{controller}/{action}/{id}",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            //).RouteHandler = new AngularRouteHandler();
-
+            //Disabled when not using MVC
             //routes.MapRoute(
             //    name: "Default",
             //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Layout", action = "Index", id = UrlParameter.Optional } //Changed default route to layout controller
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional } //Changed default route to layout controller
             //);
         }
     }

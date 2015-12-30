@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using BaseApp.Data.Contexts;
-using BaseApp.Data.Models;
+using BaseApp.Data.Entities;
 using BaseApp.Data.Repositories.Interfaces;
 using BaseApp.Model.Models.Domain;
 
@@ -19,12 +20,7 @@ namespace BaseApp.Data.Repositories
         {
             get
             {
-                return _dataContext.GetQueryable<ExampleEntity>().Select(x => new Example()
-                {
-                    Id = x.Id,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName
-                });
+                return _dataContext.GetQueryable<ExampleEntity>().ProjectTo<Example>();
             }
         }
 

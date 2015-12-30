@@ -104,9 +104,9 @@
     <Compile Include="Contexts\ApplicationDbContext.cs" />
     <Compile Include="Contexts\DataContext.cs" />
     <Compile Include="Contexts\IDataContext.cs" />
-    <Compile Include="Models\ExampleEntity.cs" />
-    <Compile Include="Models\LogActionEntity.cs" />
-    <Compile Include="Models\User\ApplicationUserEntity.cs" />
+    <Compile Include="Entities\ExampleEntity.cs" />
+    <Compile Include="Entities\LogActionEntity.cs" />
+    <Compile Include="Entities\User\ApplicationUserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registries\DataRegistry.cs" />
     <Compile Include="Repositories\ApplicationUserRepository.cs" />

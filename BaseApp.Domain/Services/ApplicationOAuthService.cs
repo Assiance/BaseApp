@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using BaseApp.Data.Models.User;
+using BaseApp.Data.Entities.User;
 using BaseApp.Domain.Managers;
 using BaseApp.Domain.Providers;
 using BaseApp.Domain.Services.Interfaces;

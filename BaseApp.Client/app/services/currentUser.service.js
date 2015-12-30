@@ -26,3 +26,4 @@ var app;
             .factory('currentUserService', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=currentUser.service.js.map

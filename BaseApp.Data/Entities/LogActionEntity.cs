@@ -1,7 +1,7 @@
 ﻿using System;
-using BaseApp.Data.Models.User;
+using BaseApp.Data.Entities.User;
 
-namespace BaseApp.Data.Models
+namespace BaseApp.Data.Entities
 {
     public class LogActionEntity
     {

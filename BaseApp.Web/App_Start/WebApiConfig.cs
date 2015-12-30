@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using BaseApp.Web.Infrastructure.Security;
 using Microsoft.Owin.Security.OAuth;
 
@@ -15,6 +16,10 @@ namespace BaseApp.Web
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            //enable cors globally
+            var corsAttr = new EnableCorsAttribute("http://localhost:52613", "*", "*"); //get path from config
+            config.EnableCors(corsAttr);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
