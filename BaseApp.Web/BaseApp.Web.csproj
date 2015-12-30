@@ -265,14 +265,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AngularExampleController.cs" />
     <Compile Include="Controllers\APIs\AccountController.cs" />
     <Compile Include="Controllers\APIs\ExamplesController.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LayoutController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Infrastructure\Alerts\Alert.cs" />
     <Compile Include="Infrastructure\Alerts\AlertDecoratorResult.cs" />
     <Compile Include="Infrastructure\Alerts\AlertExtensions.cs" />
@@ -281,7 +277,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\EverfluxViewEngine.cs" />
     <Compile Include="Infrastructure\Controllers\BaseController.cs" />
     <Compile Include="Infrastructure\Security\EnforceHttpsHandler.cs" />
     <Compile Include="Infrastructure\Security\RequireSecureConnectionFilter.cs" />
