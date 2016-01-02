@@ -13,3 +13,4 @@ var app;
         domain.Example = Example;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=example.model.js.map

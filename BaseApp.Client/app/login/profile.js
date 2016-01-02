@@ -14,3 +14,4 @@ var app;
         domain.Profile = Profile;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=profile.js.map

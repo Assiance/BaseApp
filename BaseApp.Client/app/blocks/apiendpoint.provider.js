@@ -22,3 +22,4 @@ var app;
         ApiEndpointProvider);
     })(blocks = app.blocks || (app.blocks = {}));
 })(app || (app = {}));
+//# sourceMappingURL=apiendpoint.provider.js.map

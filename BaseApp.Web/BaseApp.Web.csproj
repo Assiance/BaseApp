@@ -301,8 +301,8 @@
     <Compile Include="ViewModels\Account\ExternalLoginViewModel.cs" />
     <Compile Include="ViewModels\Account\ManageInfoViewModel.cs" />
     <Compile Include="ViewModels\Account\UserInfoViewModel.cs" />
-    <Compile Include="ViewModels\AnotherExampleViewModel.cs" />
-    <Compile Include="ViewModels\ExampleViewModel.cs" />
+    <Compile Include="ViewModels\CreateExampleRequest.cs" />
+    <Compile Include="ViewModels\ExampleResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

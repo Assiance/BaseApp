@@ -1,6 +1,8 @@
-﻿namespace BaseApp.Web.ViewModels
+﻿using BaseApp.Model.Models;
+
+namespace BaseApp.Web.ViewModels
 {
-    public class ExampleResponse
+    public class ExampleResponse : BaseResponse
     {         
     }
 }
