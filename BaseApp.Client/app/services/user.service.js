@@ -21,4 +21,3 @@ var app;
             .service('userService', UserService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=user.service.js.map

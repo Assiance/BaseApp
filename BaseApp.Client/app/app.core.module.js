@@ -13,4 +13,3 @@
         'ui.router'
     ]);
 })();
-//# sourceMappingURL=app.core.module.js.map
