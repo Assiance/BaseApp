@@ -19,7 +19,7 @@ namespace BaseApp.Web.Infrastructure.StructureMap.Registries
                 scan.WithDefaultConventions();
             });
 
-            //For<IOwinContext>().Use(() => HttpContext.Current.GetOwinContext());
+            For<IOwinContext>().Use(() => HttpContext.Current.GetOwinContext());
         }
     }
 }

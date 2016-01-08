@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace BaseApp.Model.Models
 {
-    public abstract class BaseResult
+    public abstract class BaseModel
     {
         private List<string> _errorMessages = new List<string>();
 

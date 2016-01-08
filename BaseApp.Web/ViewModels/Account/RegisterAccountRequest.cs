@@ -1,8 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using BaseApp.Core.Mapping;
+using BaseApp.Model.Models.Domain.Authentication;
 
-namespace BaseApp.Model.Models.Domain.Account
+namespace BaseApp.Web.ViewModels.Account
 {
-    public class RegisterModel
+    public class RegisterAccountRequest : IMapFrom<Registration>, IMapTo<Registration>
     {
         [Required]
         [Display(Name = "Email")]

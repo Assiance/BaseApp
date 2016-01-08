@@ -26,6 +26,9 @@ namespace BaseApp.Domain.Services
 
             ApplicationUserEntity user = await userManager.FindAsync(context.UserName, context.Password);
 
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin",
+                new[] { "http://localhost:52613" }); //todo: change to config
+
             if (user == null)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
@@ -98,6 +101,8 @@ namespace BaseApp.Domain.Services
                 Provider = new ApplicationOAuthProvider(publicClientId, this),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+
+                // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true
             };
 

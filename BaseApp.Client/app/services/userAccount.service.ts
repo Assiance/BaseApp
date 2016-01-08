@@ -4,18 +4,22 @@ module app.services {
 
     //Service Model
     export interface IUserAccountDefinition {
+        Username: string;
         Email: string;
         Password: string;
         ConfirmPassword: string;
+        Grant_Type: string;
     }
 
     export interface IUserAccount extends IUserAccountDefinition, ng.resource.IResource<IUserAccountDefinition> {
     }
 
     export class UserAccount implements IUserAccountDefinition {
-        constructor(public Email: string, public Password: string, public ConfirmPassword: string) {
-
-        }
+        public Username: string;
+        public Grant_Type: string;
+        public Email: string;
+        public Password: string;
+        public ConfirmPassword: string;
     }
     
     //Service
@@ -26,6 +30,7 @@ module app.services {
 
     export interface IUserAccountService {
         registration: any;
+        login: any;
     }
 
     class UserAccountService implements IUserAccountService {
@@ -36,8 +41,23 @@ module app.services {
             var self = this;
         }
 
-        registration = this.$resource("http://localhost:53213/api/Account/Register", null, {
+        registration: any = this.$resource(this.appSettings.serverPath + "/api/Account/Register", null, {
             'registerUser': { method: 'POST' }
+        });
+
+        login: any = this.$resource(this.appSettings.serverPath + "/Token", null, {
+            'loginUser': {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                transformRequest: function(data, headersGetter) {
+                    var str = [];
+                    for (var d in data) {
+                        str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+                    }
+
+                    return str.join("&");
+                }
+            }
         });
         
     }

@@ -2,7 +2,7 @@
 
 namespace BaseApp.Web.ViewModels
 {
-    public class ExampleResponse : BaseResponse
+    public class ExampleResponse : BaseModel
     {         
     }
 }

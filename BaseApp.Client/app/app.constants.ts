@@ -7,7 +7,7 @@
         'use strict';
 
         var appSettings: IAppSettings = {
-            serverPath: ''
+            serverPath: 'http://localhost:53213'
         };
 
         angular

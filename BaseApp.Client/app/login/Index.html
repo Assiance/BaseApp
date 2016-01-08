@@ -19,17 +19,17 @@
                     <div class="form-group">
                         <label class="control-label" for="username">Username: </label>
                         <div>
-                            <input class="form-control" id="username" />
+                            <input type="email" class="form-control" id="username" ng-model="vm.loginUsername" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label" for="username">Username: </label>
+                        <label class="control-label" for="password">Password: </label>
                         <div>
-                            <input class="form-control" id="username" />
+                            <input type="password" class="form-control" id="loginPassword" ng-model="vm.loginPassword" />
                         </div>
                     </div>
 
-                    <button class="btn btn-primary">Login</button>
+                    <button class="btn btn-primary" ng-click="vm.login()">Login</button>
                 </form>
             </section>
         </div>

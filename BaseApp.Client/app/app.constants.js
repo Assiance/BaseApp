@@ -5,7 +5,7 @@ var app;
         (function () {
             'use strict';
             var appSettings = {
-                serverPath: ''
+                serverPath: 'http://localhost:53213'
             };
             angular
                 .module('app')

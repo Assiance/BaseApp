@@ -5,10 +5,7 @@ var app;
     (function (services) {
         'use strict';
         var UserAccount = (function () {
-            function UserAccount(Email, Password, ConfirmPassword) {
-                this.Email = Email;
-                this.Password = Password;
-                this.ConfirmPassword = ConfirmPassword;
+            function UserAccount() {
             }
             return UserAccount;
         })();
@@ -17,8 +14,21 @@ var app;
             function UserAccountService($resource, appSettings) {
                 this.$resource = $resource;
                 this.appSettings = appSettings;
-                this.registration = this.$resource("http://localhost:53213/api/Account/Register", null, {
+                this.registration = this.$resource(this.appSettings.serverPath + "/api/Account/Register", null, {
                     'registerUser': { method: 'POST' }
+                });
+                this.login = this.$resource(this.appSettings.serverPath + "/Token", null, {
+                    'loginUser': {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        transformRequest: function (data, headersGetter) {
+                            var str = [];
+                            for (var d in data) {
+                                str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+                            }
+                            return str.join("&");
+                        }
+                    }
                 });
                 var self = this;
             }

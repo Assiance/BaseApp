@@ -18,7 +18,7 @@ namespace BaseApp.Web
             config.MapHttpAttributeRoutes();
 
             //enable cors globally
-            var corsAttr = new EnableCorsAttribute("http://localhost:52613", "*", "*"); //get path from config
+            var corsAttr = new EnableCorsAttribute("http://localhost:52613", "*", "*"); //todo: get path from config
             config.EnableCors(corsAttr);
 
             config.Routes.MapHttpRoute(
